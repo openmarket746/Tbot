@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: tbot
+    name: Tbot
     runtime: python
     region: oregon        # options: oregon, ohio, virginia, frankfurt, singapore
     plan: free            # free tier — spins down after 15min inactivity, no persistent disk
