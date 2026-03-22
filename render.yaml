@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: tbot
+    runtime: python
+    region: oregon          # change to: ohio, virginia, frankfurt, singapore, ohio
+    plan: starter           # starter = always-on ($7/mo). free = spins down (not suitable)
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --worker-class gevent -w 1 --bind 0.0.0.0:$PORT --timeout 300 front:app
+
+    # Environment variables — set these in the Render dashboard too for secrets
+    envVars:
+      - key: TBOT_DATA_DIR
+        value: /data          # all persistent user files write here (the mounted disk)
+      - key: FLASK_ENV
+        value: production
+      - key: PYTHONUNBUFFERED
+        value: "1"            # ensures print() output appears in Render logs immediately
+
+    # Persistent disk — keeps win/loss memory, summaries, license.db across deploys
+    disk:
+      name: tbot-data
+      mountPath: /data
+      sizeGB: 1              # $1/mo — more than enough for all user data files
