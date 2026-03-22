@@ -1,7 +1,0 @@
-flask
-flask-socketio
-gevent
-gevent-websocket
-websocket-client
-colorama
-gunicorn
