@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: tbot
+    runtime: python
+    region: oregon        # options: oregon, ohio, virginia, frankfurt, singapore
+    plan: free            # free tier — spins down after 15min inactivity, no persistent disk
+
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --worker-class gevent -w 1 --bind 0.0.0.0:$PORT --timeout 300 front:app
+
+    envVars:
+      # ── App ───────────────────────────────────────────────────────────────
+      - key: FLASK_ENV
+        value: production
+      - key: PYTHONUNBUFFERED
+        value: "1"
+
+      # ── These must be set manually in Render dashboard (keep them secret) ─
+      # - key: SECRET_KEY          → any long random string for sessions
+      # - key: ADMIN_PASSWORD      → your admin login password
+      # - key: ADMIN_PATH          → secret admin URL slug e.g. /x7k2-manage
+      # - key: GMAIL_ADDRESS       → your Gmail address
+      # - key: GMAIL_APP_PASS      → your Gmail App Password
+      # - key: ADMIN_EMAIL         → email where payment alerts go
+      # - key: APP_URL             → https://your-app-name.onrender.com
+      # - key: USDT_ADDRESS        → your USDT wallet address
+      # - key: PRICE_USD           → subscription price e.g. 20
+      # - key: LICENSE_DAYS        → days per subscription e.g. 30
+      # - key: FROM_NAME           → sender name on emails e.g. TBOT
+
+      # NOTE: TBOT_DATA_DIR is NOT set here on free tier.
+      # Without a disk, files are written next to the app scripts.
+      # Data is lost on redeploy — acceptable for testing, not for production.
