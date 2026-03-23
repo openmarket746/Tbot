@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T — BOT</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/socket.io@4.7.5/client-dist/socket.io.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:      #090c10;
+    --surface: #0e1318;
+    --border:  #1a2130;
+    --accent:  #00e5a0;
+    --accent2: #00a8ff;
+    --warn:    #ff4d6d;
+    --text:    #c8d8e8;
+    --dim:     #4a6070;
+    --card-bg: #0b1017;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Mono', monospace;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
+    pointer-events: none; z-index: 1;
+  }
+
+  .wrapper {
+    position: relative; z-index: 2;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 0 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+
+  .logo { display: flex; align-items: center; gap: 14px; }
+
+  .logo-icon {
+    width: 42px; height: 42px;
+    border: 2px solid var(--accent); border-radius: 8px;
+    display: grid; place-items: center;
+    box-shadow: 0 0 16px rgba(0,229,160,0.3), inset 0 0 12px rgba(0,229,160,0.05);
+  }
+
+  .logo-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.5px;
+  }
+  .logo-text span { color: var(--accent); }
+
+  .conn-badge {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--dim); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 4px;
+    transition: all 0.3s;
+  }
+  .conn-badge.connected { color: var(--accent); border-color: rgba(0,229,160,0.3); }
+  .conn-badge .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--dim);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  .conn-badge.connected .dot {
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* ── STEPS ── */
+  .steps {
+    display: flex; align-items: center; gap: 0;
+    margin-bottom: 36px;
+  }
+
+  .step {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--dim); padding: 10px 0; cursor: default;
+    transition: color 0.3s;
+  }
+
+  .step.active { color: var(--accent); }
+  .step.done   { color: var(--dim); }
+
+  .step-num {
+    width: 26px; height: 26px; border-radius: 50%;
+    border: 1.5px solid var(--border);
+    display: grid; place-items: center;
+    font-size: 11px; font-weight: 600;
+    color: var(--dim); flex-shrink: 0;
+    transition: all 0.3s;
+  }
+
+  .step.active .step-num {
+    border-color: var(--accent); color: var(--accent);
+    box-shadow: 0 0 10px rgba(0,229,160,0.25);
+  }
+
+  .step.done .step-num {
+    background: rgba(0,229,160,0.1); border-color: rgba(0,229,160,0.3);
+    color: var(--accent);
+  }
+
+  .step-connector {
+    flex: 1; height: 1px; background: var(--border);
+    margin: 0 12px; max-width: 60px;
+  }
+
+  /* ── PANEL ── */
+  .panel {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    margin-bottom: 24px;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .panel.locked {
+    opacity: 0.4; pointer-events: none;
+    transform: translateY(4px);
+  }
+
+  .panel-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(255,255,255,0.01);
+  }
+
+  .panel-header-left { display: flex; align-items: center; gap: 10px; }
+
+  .panel-header h2 {
+    font-family: 'Syne', sans-serif; font-size: 13px;
+    font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #fff;
+  }
+
+  .panel-tag {
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 3px;
+  }
+
+  .panel-tag.required {
+    background: rgba(0,229,160,0.08); color: var(--accent);
+    border: 1px solid rgba(0,229,160,0.2);
+  }
+  .panel-tag.optional {
+    background: rgba(0,168,255,0.08); color: var(--accent2);
+    border: 1px solid rgba(0,168,255,0.2);
+  }
+  .panel-tag.done-tag {
+    background: rgba(0,229,160,0.12); color: var(--accent);
+    border: 1px solid rgba(0,229,160,0.3);
+  }
+
+  .panel-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 8px var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  .panel-body { padding: 24px; }
+
+  /* ── FORM ── */
+  .field { margin-bottom: 20px; }
+  .field:last-of-type { margin-bottom: 0; }
+
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  label {
+    display: block; font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--dim); margin-bottom: 8px;
+  }
+
+  input {
+    width: 100%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border); border-radius: 6px;
+    padding: 11px 14px; color: var(--text);
+    font-family: 'IBM Plex Mono', monospace; font-size: 13px;
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0,229,160,0.08);
+  }
+
+  input.error-field {
+    border-color: var(--warn);
+    box-shadow: 0 0 0 3px rgba(255,77,109,0.08);
+  }
+
+  input.success-field {
+    border-color: rgba(0,229,160,0.4);
+  }
+
+  input::placeholder { color: var(--dim); }
+
+  /* ── BUTTON ── */
+  .btn {
+    width: 100%; padding: 13px; border: none; border-radius: 8px;
+    font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    cursor: pointer; transition: all 0.15s;
+  }
+
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+
+  .btn-primary {
+    background: var(--accent); color: #000;
+    box-shadow: 0 0 24px rgba(0,229,160,0.25);
+    margin-top: 24px;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: #00ffb3;
+    box-shadow: 0 0 32px rgba(0,229,160,0.45);
+    transform: translateY(-1px);
+  }
+
+  .btn-blue {
+    background: var(--accent2); color: #000;
+    box-shadow: 0 0 24px rgba(0,168,255,0.2);
+    margin-top: 24px;
+  }
+  .btn-blue:hover:not(:disabled) {
+    background: #33bcff;
+    box-shadow: 0 0 32px rgba(0,168,255,0.4);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border);
+    margin-top: 10px;
+  }
+  .btn-outline:hover:not(:disabled) {
+    border-color: var(--accent); color: var(--accent);
+  }
+
+  /* ── ALERT BOXES ── */
+  .alert {
+    border-radius: 8px; padding: 14px 16px;
+    font-size: 12px; line-height: 1.6;
+    display: none; margin-top: 16px;
+    animation: fadeUp 0.25s ease;
+  }
+  .alert.show { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(4px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .alert-success {
+    background: rgba(0,229,160,0.06);
+    border: 1px solid rgba(0,229,160,0.25);
+    color: var(--accent);
+  }
+  .alert-error {
+    background: rgba(255,77,109,0.06);
+    border: 1px solid rgba(255,77,109,0.25);
+    color: var(--warn);
+  }
+  .alert-info {
+    background: rgba(0,168,255,0.06);
+    border: 1px solid rgba(0,168,255,0.2);
+    color: var(--accent2);
+  }
+
+  /* ── CONFIG PREVIEW ── */
+  .config-preview {
+    background: rgba(0,0,0,0.35);
+    border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px 20px;
+    margin-top: 20px; display: none;
+    animation: fadeUp 0.25s ease;
+  }
+  .config-preview.show { display: block; }
+
+  .config-preview-label {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 10px;
+  }
+
+  .config-preview pre {
+    font-size: 11px; color: var(--accent); line-height: 1.7;
+    white-space: pre-wrap; word-break: break-all;
+  }
+
+  /* ── TERMINAL LAYOUT ── */
+  .terminal-layout {
+    display: grid;
+    grid-template-columns: 1fr 290px;
+    gap: 16px;
+    align-items: start;
+  }
+
+  /* ── TERMINAL ── */
+  .terminal-wrap {
+    background: #000;
+    border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; display: none;
+    animation: fadeUp 0.3s ease;
+  }
+  .terminal-wrap.show { display: block; }
+
+  .terminal-bar {
+    background: #0b1017; border-bottom: 1px solid var(--border);
+    padding: 12px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .terminal-dots { display: flex; gap: 7px; }
+  .terminal-dots span { width: 12px; height: 12px; border-radius: 50%; }
+  .terminal-dots .d-red    { background: #ff5f57; }
+  .terminal-dots .d-yellow { background: #ffbd2e; }
+  .terminal-dots .d-green  { background: #28c840; }
+
+  .terminal-title { font-size: 11px; color: var(--dim); letter-spacing: 1px; }
+  .terminal-actions { display: flex; gap: 8px; }
+
+  .term-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border); color: var(--dim);
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    letter-spacing: 1px; padding: 4px 10px; border-radius: 4px;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .term-btn:hover { color: var(--accent); border-color: rgba(0,229,160,0.4); }
+  .term-btn.active { color: var(--accent); border-color: rgba(0,229,160,0.4); background: rgba(0,229,160,0.07); }
+
+  #terminal-output {
+    height: 340px; overflow-y: auto; padding: 20px;
+    font-size: 13px; line-height: 1.6; color: #c8d8e8;
+    white-space: pre-wrap; word-break: break-word;
+  }
+
+  #xterm-container {
+    height: 400px;
+    background: #000;
+    overflow: hidden;
+  }
+
+  /* xterm overrides */
+  .xterm { height: 100%; }
+  .xterm-viewport { overflow-y: auto !important; }
+  .xterm-viewport::-webkit-scrollbar { width: 6px; }
+  .xterm-viewport::-webkit-scrollbar-track { background: transparent; }
+  .xterm-viewport::-webkit-scrollbar-thumb { background: #1a2130; border-radius: 3px; }
+
+  #terminal-output::-webkit-scrollbar { width: 6px; }
+  #terminal-output::-webkit-scrollbar-track { background: transparent; }
+  #terminal-output::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  .terminal-input-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 20px; border-top: 1px solid var(--border);
+    background: #050709;
+  }
+
+  .terminal-prompt { color: var(--accent); font-size: 13px; flex-shrink: 0; }
+
+  #terminal-input {
+    flex: 1; background: transparent; border: none;
+    color: var(--text); font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px; outline: none; caret-color: var(--accent);
+  }
+
+  /* ── TRADING CONTROLS ── */
+  .controls-panel {
+    display: none; flex-direction: column; gap: 12px;
+    animation: fadeUp 0.3s ease;
+  }
+  .controls-panel.show { display: flex; }
+
+  .ctrl-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden;
+  }
+
+  .ctrl-card-header {
+    padding: 10px 14px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.01);
+  }
+  .ctrl-card-header span {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--dim); font-weight: 600;
+  }
+  .ctrl-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .ctrl-body { padding: 14px; }
+
+  .ctrl-field { margin-bottom: 11px; }
+  .ctrl-field:last-child { margin-bottom: 0; }
+
+  .ctrl-label {
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 5px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .ctrl-label .unit { color: var(--accent); font-size: 9px; }
+
+  .ctrl-input-row { display: flex; align-items: center; gap: 5px; }
+
+  .ctrl-input {
+    flex: 1; background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border); border-radius: 5px;
+    padding: 7px 10px; color: var(--text);
+    font-family: 'IBM Plex Mono', monospace; font-size: 13px;
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%;
+  }
+  .ctrl-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(0,229,160,0.08);
+  }
+  .ctrl-input::placeholder { color: var(--dim); font-size: 11px; }
+
+  .ctrl-stepper { display: flex; flex-direction: column; gap: 2px; }
+  .ctrl-step-btn {
+    width: 22px; height: 18px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border); border-radius: 3px;
+    color: var(--dim); font-size: 11px; cursor: pointer;
+    display: grid; place-items: center; transition: all 0.1s;
+  }
+  .ctrl-step-btn:hover {
+    background: rgba(0,229,160,0.1); color: var(--accent); border-color: var(--accent);
+  }
+
+  .ctrl-send-btn {
+    width: 100%; padding: 10px; border: none; border-radius: 6px;
+    font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    cursor: pointer; transition: all 0.15s; margin-top: 4px;
+  }
+  .ctrl-send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .ctrl-send-btn.green {
+    background: var(--accent); color: #000;
+    box-shadow: 0 0 16px rgba(0,229,160,0.2);
+  }
+  .ctrl-send-btn.green:hover:not(:disabled) {
+    background: #00ffb3; transform: translateY(-1px);
+    box-shadow: 0 0 22px rgba(0,229,160,0.4);
+  }
+  .ctrl-send-btn.orange {
+    background: #ff8c00; color: #000;
+    box-shadow: 0 0 14px rgba(255,140,0,0.2);
+  }
+  .ctrl-send-btn.orange:hover:not(:disabled) {
+    background: #ffaa33; transform: translateY(-1px);
+  }
+  .ctrl-send-btn.red-outline {
+    background: transparent; color: var(--warn);
+    border: 1px solid rgba(255,77,109,0.4);
+  }
+  .ctrl-send-btn.red-outline:hover:not(:disabled) {
+    background: rgba(255,77,109,0.1); border-color: var(--warn);
+  }
+
+  .ctrl-flash {
+    font-size: 10px; letter-spacing: 1px; color: var(--accent);
+    text-align: center; margin-top: 5px; height: 14px;
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .ctrl-flash.show { opacity: 1; }
+
+  .cmd-history-list { max-height: 100px; overflow-y: auto; margin-top: 4px; }
+  .cmd-history-list::-webkit-scrollbar { width: 4px; }
+  .cmd-history-list::-webkit-scrollbar-thumb { background: var(--border); }
+
+  .cmd-chip {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 5px 8px; border-radius: 4px; cursor: pointer;
+    font-size: 10px; color: var(--dim); letter-spacing: 0.5px;
+    transition: background 0.1s, color 0.1s;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  .cmd-chip:hover { background: rgba(0,229,160,0.06); color: var(--accent); }
+  .cmd-chip .cmd-time { font-size: 9px; color: var(--dim); flex-shrink: 0; margin-left: 8px; }
+
+  /* ── SESSION INFO BAR ── */
+  .session-bar {
+    display: none; align-items: center; justify-content: space-between;
+    background: rgba(0,229,160,0.04);
+    border: 1px solid rgba(0,229,160,0.15);
+    border-radius: 8px; padding: 12px 20px; margin-bottom: 16px;
+    animation: fadeUp 0.25s ease; flex-wrap: wrap; gap: 10px;
+  }
+  .session-bar.show { display: flex; }
+
+  .session-info { display: flex; gap: 24px; flex-wrap: wrap; }
+  .session-kv { font-size: 11px; }
+  .session-kv .k { color: var(--dim); letter-spacing: 1px; text-transform: uppercase; font-size: 9px; display: block; margin-bottom: 2px; }
+  .session-kv .v { color: var(--accent); }
+
+  .btn-stop {
+    background: transparent; border: 1px solid rgba(255,77,109,0.35);
+    color: var(--warn); font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; letter-spacing: 1px; padding: 6px 14px;
+    border-radius: 4px; cursor: pointer; transition: all 0.15s; flex-shrink: 0;
+  }
+  .btn-stop:hover { background: rgba(255,77,109,0.1); border-color: var(--warn); }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    display: flex; align-items: center; gap: 16px; margin: 32px 0;
+  }
+  .section-divider span {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim);
+    white-space: nowrap;
+  }
+  .section-divider::before,
+  .section-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  @media (max-width: 800px) {
+    .terminal-layout { grid-template-columns: 1fr; }
+  }
+
+  /* ── REMEMBER ME ── */
+  .remember-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 16px;
+  }
+
+  .checkbox-label {
+    display: flex; align-items: center; gap: 9px;
+    cursor: pointer; user-select: none;
+    font-size: 11px; letter-spacing: 1px; color: var(--dim);
+    transition: color 0.15s;
+  }
+  .checkbox-label:hover { color: var(--text); }
+
+  .checkbox-label input[type="checkbox"] {
+    width: 16px; height: 16px; padding: 0;
+    accent-color: var(--accent);
+    cursor: pointer;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .saved-badge {
+    display: none; align-items: center; gap: 6px;
+    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(0,229,160,0.07);
+    border: 1px solid rgba(0,229,160,0.2);
+    padding: 4px 10px; border-radius: 4px;
+    animation: fadeUp 0.2s ease;
+  }
+  .saved-badge.show { display: flex; }
+  .saved-badge svg  { width: 11px; height: 11px; }
+
+  .forget-link {
+    font-size: 10px; letter-spacing: 1px; color: var(--dim);
+    text-decoration: none; cursor: pointer;
+    transition: color 0.15s; border: none; background: none;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .forget-link:hover { color: var(--warn); }
+
+  @media (max-width: 600px) {
+    .field-row { grid-template-columns: 1fr; }
+    .steps { gap: 0; }
+    .step-connector { max-width: 20px; }
+    .remember-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+  }
+
+  /* ── RISK WARNING BANNER ── */
+  .risk-warning {
+    background: rgba(255,77,109,0.07);
+    border: 1px solid rgba(255,77,109,0.35);
+    border-left: 4px solid var(--warn);
+    border-radius: 8px; padding: 14px 18px;
+    margin-bottom: 28px;
+    display: flex; align-items: flex-start; gap: 12px;
+    animation: fadeUp 0.3s ease;
+  }
+  .risk-warning-icon {
+    flex-shrink: 0; margin-top: 1px;
+    color: var(--warn); font-size: 18px; line-height: 1;
+  }
+  .risk-warning-text {
+    font-size: 12px; color: #ff8fa3; line-height: 1.7; letter-spacing: 0.3px;
+  }
+  .risk-warning-text strong {
+    color: var(--warn); letter-spacing: 1px; font-size: 11px;
+    text-transform: uppercase; display: block; margin-bottom: 4px;
+  }
+
+  /* ── STAKE CALCULATOR ── */
+  .calc-hint {
+    font-size: 11px; color: var(--accent2); letter-spacing: 0.5px;
+    margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    opacity: 0.85;
+  }
+  .calc-hint svg { flex-shrink: 0; }
+
+  .calc-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px; margin-top: 16px;
+  }
+
+  .calc-result-card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px;
+    text-align: center;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .calc-result-card.highlight {
+    border-color: rgba(0,229,160,0.3);
+    box-shadow: 0 0 14px rgba(0,229,160,0.07);
+  }
+  .calc-result-label {
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 8px; display: block;
+  }
+  .calc-result-value {
+    font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800;
+    color: var(--accent); line-height: 1;
+  }
+  .calc-result-value.red { color: var(--warn); }
+  .calc-result-value.blue { color: var(--accent2); }
+  .calc-result-sub {
+    font-size: 9px; color: var(--dim); margin-top: 6px; line-height: 1.4;
+  }
+
+  .calc-note {
+    margin-top: 14px; padding: 10px 14px;
+    background: rgba(0,168,255,0.05);
+    border: 1px solid rgba(0,168,255,0.15);
+    border-radius: 6px; font-size: 11px; color: var(--accent2);
+    line-height: 1.6; letter-spacing: 0.3px;
+  }
+
+  .calc-btn {
+    width: 100%; padding: 11px; border: none; border-radius: 7px;
+    background: var(--accent2); color: #000;
+    font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    cursor: pointer; margin-top: 16px; transition: all 0.15s;
+    box-shadow: 0 0 20px rgba(0,168,255,0.2);
+  }
+  .calc-btn:hover {
+    background: #33bcff; box-shadow: 0 0 28px rgba(0,168,255,0.4);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 600px) {
+    .calc-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+             stroke="#00e5a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          <circle cx="12" cy="16" r="1" fill="#00e5a0" stroke="none"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-text">T<span>BOT</span></div>
+        <div style="font-size:10px;color:var(--dim);letter-spacing:1.5px;margin-top:2px;">CLIENT TERMINAL</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="https://t.me/+GrNjsWw9pPBlMzM0" target="_blank" rel="noopener noreferrer"
+         title="Join our Telegram Group"
+         style="display:flex;align-items:center;gap:9px;
+                font-family:'Syne',sans-serif;font-size:12px;font-weight:800;
+                letter-spacing:2px;text-transform:uppercase;
+                color:#000;border:none;
+                padding:9px 18px;border-radius:6px;text-decoration:none;
+                background:linear-gradient(135deg,#00a8ff,#0088dd);
+                box-shadow:0 0 22px rgba(0,168,255,0.55),0 2px 8px rgba(0,0,0,0.4);
+                transition:all 0.2s;white-space:nowrap;"
+         onmouseover="this.style.background='linear-gradient(135deg,#33bcff,#00a8ff)';this.style.boxShadow='0 0 36px rgba(0,168,255,0.85),0 4px 16px rgba(0,0,0,0.5)';this.style.transform='translateY(-1px)'"
+         onmouseout="this.style.background='linear-gradient(135deg,#00a8ff,#0088dd)';this.style.boxShadow='0 0 22px rgba(0,168,255,0.55),0 2px 8px rgba(0,0,0,0.4)';this.style.transform='translateY(0)'">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#000">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.982l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.577z"/>
+        </svg>
+        Join Telegram
+      </a>
+      <a href="/signup"
+         style="display:flex;align-items:center;gap:7px;
+                font-family:'Syne',sans-serif;font-size:11px;font-weight:800;
+                letter-spacing:1.5px;text-transform:uppercase;color:#000;border:none;
+                padding:8px 16px;border-radius:6px;text-decoration:none;
+                background:var(--accent);
+                box-shadow:0 0 18px rgba(0,229,160,0.4);
+                transition:all 0.2s;white-space:nowrap;"
+         onmouseover="this.style.background='#00ffb3';this.style.boxShadow='0 0 28px rgba(0,229,160,0.6)'"
+         onmouseout="this.style.background='var(--accent)';this.style.boxShadow='0 0 18px rgba(0,229,160,0.4)'">
+        ⌁ Get Access
+      </a>
+      <div class="conn-badge" id="conn-badge">
+        <div class="dot"></div>
+        <span id="conn-text">DISCONNECTED</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- RISK WARNING BANNER -->
+  <div class="risk-warning">
+    <div class="risk-warning-icon">⚠</div>
+    <div class="risk-warning-text">
+      <strong>⚠ Risk Disclaimer</strong>
+      Please trade only what you're willing to lose — the bot also makes losses.
+      No trading system is 100% accurate. Past performance does not guarantee future results.
+      Always manage your risk responsibly.
+    </div>
+  </div>
+
+  <!-- STAKE CALCULATOR -->
+  <div class="panel" id="panel-calculator" style="margin-bottom:32px;">
+    <div class="panel-header">
+      <div class="panel-header-left">
+        <div class="panel-dot" style="background:var(--accent2);box-shadow:0 0 8px var(--accent2);"></div>
+        <h2>Stake Calculator</h2>
+      </div>
+      <span class="panel-tag optional">Risk Tool</span>
+    </div>
+    <div class="panel-body">
+
+      <div class="calc-hint">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        If you're confused and don't know what to stake, use this calculator
+      </div>
+
+      <div class="field">
+        <label>Account Balance ($)</label>
+        <input type="number" id="calc-balance" placeholder="e.g. 500" min="0" step="0.01"
+               oninput="runCalc()" style="max-width:320px;">
+      </div>
+
+      <button class="calc-btn" onclick="runCalc()">⊕ Calculate</button>
+
+      <div id="calc-results" style="display:none; margin-top:4px;">
+        <div class="calc-grid">
+          <div class="calc-result-card highlight" id="cr-stake">
+            <span class="calc-result-label">Stake Per Trade</span>
+            <div class="calc-result-value" id="cv-stake">—</div>
+            <div class="calc-result-sub">10% of TP<br>(10 wins = full TP)</div>
+          </div>
+          <div class="calc-result-card" id="cr-tp">
+            <span class="calc-result-label">Take Profit (TP)</span>
+            <div class="calc-result-value blue" id="cv-tp">—</div>
+            <div class="calc-result-sub">10% of balance<br>daily target</div>
+          </div>
+          <div class="calc-result-card" id="cr-sl">
+            <span class="calc-result-label">Stop Loss (SL)</span>
+            <div class="calc-result-value red" id="cv-sl">—</div>
+            <div class="calc-result-sub">5% of balance<br>(5 losses = SL hit)</div>
+          </div>
+        </div>
+        <div class="calc-note" id="calc-note"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STEP INDICATOR -->
+  <div class="steps">
+    <div class="step active" id="step-1">
+      <div class="step-num">1</div>
+      <span>License</span>
+    </div>
+    <div class="step-connector"></div>
+    <div class="step" id="step-2">
+      <div class="step-num">2</div>
+      <span>App Config</span>
+    </div>
+    <div class="step-connector"></div>
+    <div class="step" id="step-3">
+      <div class="step-num">3</div>
+      <span>Bot Settings</span>
+    </div>
+    <div class="step-connector"></div>
+    <div class="step" id="step-4">
+      <div class="step-num">4</div>
+      <span>Terminal</span>
+    </div>
+  </div>
+
+  <!-- ── STEP 1: LICENSE ── -->
+  <div class="panel" id="panel-license">
+    <div class="panel-header">
+      <div class="panel-header-left">
+        <div class="panel-dot"></div>
+        <h2>License Verification</h2>
+      </div>
+      <span class="panel-tag required">Step 1</span>
+    </div>
+    <div class="panel-body">
+      <div class="field-row">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" id="lic-name" placeholder="your_username" autocomplete="off">
+        </div>
+        <div class="field">
+          <label>License Token</label>
+          <input type="text" id="lic-token"
+                 placeholder="XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX"
+                 autocomplete="off"
+                 style="font-size:11px; letter-spacing:0.5px;">
+        </div>
+      </div>
+
+      <div class="remember-row">
+        <label class="checkbox-label">
+          <input type="checkbox" id="lic-remember">
+          Remember me
+        </label>
+        <button class="forget-link" id="lic-forget-btn"
+                onclick="forgetLicense()" style="display:none;">
+          ✕ clear saved
+        </button>
+      </div>
+
+      <button class="btn btn-primary" id="btn-connect" onclick="connectSession()">
+        ⌁ Verify &amp; Connect
+      </button>
+
+      <div class="alert alert-error" id="lic-error"></div>
+      <div class="alert alert-success" id="lic-success"></div>
+    </div>
+  </div>
+
+  <!-- ── STEP 2: APP CONFIG ── -->
+  <div class="panel locked" id="panel-config">
+    <div class="panel-header">
+      <div class="panel-header-left">
+        <div class="panel-dot" style="background:var(--accent2);box-shadow:0 0 8px var(--accent2);animation:none;"></div>
+        <h2>App Configuration</h2>
+      </div>
+      <span class="panel-tag optional" id="config-tag">Step 2</span>
+    </div>
+    <div class="panel-body">
+
+      <div style="margin-bottom:20px;">
+        <p style="font-size:12px;color:var(--dim);line-height:1.7;">
+          Enter your broker credentials. These are saved to
+          <span style="color:var(--accent);">config.json</span> on the server
+          and used by the trading script at runtime.
+        </p>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>App ID</label>
+          <input type="text" id="cfg-app-id" placeholder="e.g. 1089" autocomplete="off">
+        </div>
+        <div class="field">
+          <label>API Token</label>
+          <input type="text" id="cfg-api-token" placeholder="e.g. Vy64g6gy6hf568" autocomplete="off">
+        </div>
+      </div>
+
+      <button class="btn btn-primary" id="btn-verify-save" onclick="verifyAndSave()">
+        ⊙ Verify &amp; Save Config
+      </button>
+      <button class="btn btn-outline" id="btn-skip-config" onclick="skipConfig()">
+        Skip — use existing config
+      </button>
+
+      <!-- Deriv verify result -->
+      <div class="alert alert-info"    id="deriv-verifying" style="display:none;">
+        <span id="deriv-verifying-text">⟳  Connecting to Deriv…</span>
+      </div>
+      <div class="alert alert-success" id="deriv-ok"  style="display:none;"></div>
+      <div class="alert alert-error"   id="deriv-err" style="display:none;"></div>
+
+      <div class="remember-row" style="margin-top:14px;">
+        <label class="checkbox-label">
+          <input type="checkbox" id="cfg-remember">
+          Remember App ID &amp; Token
+        </label>
+        <button class="forget-link" id="cfg-forget-btn"
+                onclick="forgetConfig()" style="display:none;">
+          ✕ clear saved
+        </button>
+      </div>
+
+      <div class="alert alert-error"   id="cfg-error"></div>
+      <div class="alert alert-success" id="cfg-success"></div>
+
+    </div>
+  </div>
+
+
+  <!-- ── STEP 3: BOT SETTINGS ── -->
+  <div class="panel locked" id="panel-bot-settings">
+    <div class="panel-header">
+      <div class="panel-header-left">
+        <div class="panel-dot" style="background:var(--accent);box-shadow:0 0 8px var(--accent);animation:none;"></div>
+        <h2>Bot Settings</h2>
+      </div>
+      <span class="panel-tag required" id="bot-settings-tag">Step 3</span>
+    </div>
+    <div class="panel-body">
+
+      <!-- Stake Mode -->
+      <div class="field" style="margin-bottom:20px">
+        <label>Stake Mode</label>
+        <div style="display:flex;gap:12px;margin-top:6px">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;
+                        font-size:12px;color:var(--text);text-transform:none;letter-spacing:0">
+            <input type="radio" name="stake-mode" id="mode-auto" value="auto" checked
+                   onchange="toggleStakeMode()" style="accent-color:var(--accent)">
+            Auto &nbsp;<span style="color:var(--dim);font-size:11px">(from balance)</span>
+          </label>
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;
+                        font-size:12px;color:var(--text);text-transform:none;letter-spacing:0">
+            <input type="radio" name="stake-mode" id="mode-manual" value="manual"
+                   onchange="toggleStakeMode()" style="accent-color:var(--accent)">
+            Manual
+          </label>
+        </div>
+      </div>
+
+      <!-- Manual settings (hidden in auto mode) -->
+      <div id="manual-settings">
+        <div class="field-row">
+          <div class="field">
+            <label>Stake per Trade ($)</label>
+            <input type="number" id="bot-stake" placeholder="e.g. 1.00"
+                   min="0.35" step="0.01" value="1.00">
+          </div>
+          <div class="field">
+            <label>Daily Take Profit ($)</label>
+            <input type="number" id="bot-tp" placeholder="e.g. 10.00"
+                   min="0" step="0.01" value="10.00">
+          </div>
+        </div>
+        <div class="field">
+          <label>Daily Stop Loss ($)</label>
+          <input type="number" id="bot-sl" placeholder="e.g. 5.00"
+                 min="0" step="0.01" value="5.00">
+        </div>
+      </div>
+
+      <!-- Common settings -->
+      <div class="field-row">
+        <div class="field">
+          <label>Max Open Trades per Symbol</label>
+          <input type="number" id="bot-max-trades" placeholder="e.g. 2"
+                 min="1" max="10" step="1" value="2">
+        </div>
+        <div class="field">
+          <label>Max Symbols at Once</label>
+          <input type="number" id="bot-max-symbols" placeholder="e.g. 1"
+                 min="1" max="5" step="1" value="1">
+        </div>
+      </div>
+
+      <div class="alert alert-error" id="bot-settings-error"></div>
+
+      <button class="btn btn-primary" id="btn-start-bot" onclick="startBot()">
+        ⌁ Start Bot
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ── STEP 4: TERMINAL ── -->
+  <div class="section-divider"><span>Terminal Session</span></div>
+
+  <div class="session-bar" id="session-bar">
+    <div class="session-info">
+      <div class="session-kv">
+        <span class="k">User</span>
+        <span class="v" id="sess-user">—</span>
+      </div>
+      <div class="session-kv">
+        <span class="k">Status</span>
+        <span class="v" id="sess-status">—</span>
+      </div>
+      <div class="session-kv">
+        <span class="k">Config</span>
+        <span class="v" id="sess-config-status">—</span>
+      </div>
+    </div>
+    <button class="btn-stop" onclick="stopSession()">■ Stop Session</button>
+  </div>
+
+  <div class="terminal-layout">
+
+    <!-- LEFT: TERMINAL -->
+    <div class="terminal-wrap" id="terminal-wrap">
+      <div class="terminal-bar">
+        <div class="terminal-dots">
+          <span class="d-red"></span>
+          <span class="d-yellow"></span>
+          <span class="d-green"></span>
+        </div>
+        <div class="terminal-title" id="terminal-title">terminal — not connected</div>
+        <div class="terminal-actions">
+          <button class="term-btn" onclick="termFontSize(-1)" title="Zoom out">A−</button>
+          <button class="term-btn" onclick="termFontSize(1)"  title="Zoom in">A+</button>
+          <button class="term-btn" onclick="termFit()"        title="Fit to window">⊡ FIT</button>
+          <button class="term-btn" onclick="clearTerminal()">CLEAR</button>
+        </div>
+      </div>
+      <!-- xterm.js mounts here -->
+      <div id="xterm-container" style="padding:8px 4px;"></div>
+    </div>
+
+    <!-- RIGHT: TRADING CONTROLS -->
+    <div class="controls-panel" id="controls-panel">
+
+      <!-- COMMAND HISTORY -->
+      <div class="ctrl-card">
+        <div class="ctrl-card-header">
+          <div class="ctrl-dot" style="background:var(--dim);"></div>
+          <span>Sent Commands</span>
+        </div>
+        <div class="ctrl-body" style="padding:10px 14px;">
+          <div class="cmd-history-list" id="cmd-history">
+            <div style="font-size:10px;color:var(--dim);letter-spacing:1px;padding:6px 0;">
+              // no commands sent yet
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /controls-panel -->
+
+  </div><!-- /terminal-layout -->
+
+  <!-- terminal locked placeholder -->
+  <div class="panel locked" id="terminal-locked" style="display:block;">
+    <div class="panel-body" style="text-align:center;padding:40px;">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+           stroke="var(--dim)" stroke-width="1.5" style="margin-bottom:14px;">
+        <rect x="3" y="11" width="18" height="11" rx="2"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+      <p style="font-size:12px;color:var(--dim);letter-spacing:1px;">
+        Complete steps 1 &amp; 2 to unlock terminal
+      </p>
+    </div>
+  </div>
+
+</div><!-- /wrapper -->
+
+<script>
+// ── STATE ────────────────────────────────────────────────────────────────────
+let socket        = null;
+let currentUser   = null;
+let sessionActive = false;
+let configSaved   = false;
+
+const LS_LIC_KEY  = "lf_license";   // { name, token }
+const LS_CFG_KEY  = "lf_config";    // { app_id, api_token }
+
+const DEFAULT_CONFIG = {
+  app_id: "",
+  api_token: "",
+  pairs: [
+    { symbol: "R_100", trend: null },
+    { symbol: "R_50",  trend: null },
+    { symbol: "R_25",  trend: null },
+    { symbol: "R_10",  trend: null },
+    { symbol: "R_5",   trend: null }
+  ]
+};
+
+// ── LOCAL STORAGE HELPERS ────────────────────────────────────────────────────
+function lsGet(key) {
+  try { return JSON.parse(localStorage.getItem(key)); } catch { return null; }
+}
+function lsSet(key, val) {
+  try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
+}
+function lsDel(key) {
+  try { localStorage.removeItem(key); } catch {}
+}
+
+// ── AUTOFILL ON LOAD ──────────────────────────────────────────────────────────
+// Only prefills fields — NEVER auto-submits. User must click the button.
+function autofillSaved() {
+  const lic = lsGet(LS_LIC_KEY);
+  if (lic && lic.name && lic.token) {
+    document.getElementById("lic-name").value         = lic.name;
+    document.getElementById("lic-token").value        = lic.token;
+    document.getElementById("lic-remember").checked   = true;
+    document.getElementById("lic-forget-btn").style.display = "inline";
+  }
+
+  const cfg = lsGet(LS_CFG_KEY);
+  if (cfg && cfg.app_id && cfg.api_token) {
+    document.getElementById("cfg-app-id").value       = cfg.app_id;
+    document.getElementById("cfg-api-token").value    = cfg.api_token;
+    document.getElementById("cfg-remember").checked   = true;
+    document.getElementById("cfg-forget-btn").style.display = "inline";
+  }
+}
+
+function forgetLicense() {
+  lsDel(LS_LIC_KEY);
+  document.getElementById("lic-name").value           = "";
+  document.getElementById("lic-token").value          = "";
+  document.getElementById("lic-remember").checked     = false;
+  document.getElementById("lic-forget-btn").style.display = "none";
+}
+
+function forgetConfig() {
+  lsDel(LS_CFG_KEY);
+  document.getElementById("cfg-app-id").value         = "";
+  document.getElementById("cfg-api-token").value      = "";
+  document.getElementById("cfg-remember").checked     = false;
+  document.getElementById("cfg-forget-btn").style.display = "none";
+}
+
+// ── SESSION RECONNECT ────────────────────────────────────────────────────────
+function checkAndReconnect(name) {
+  // Ask server if this user's bot is still running
+  fetch(`/session-status?name=${encodeURIComponent(name)}`, {
+    headers: { "X-Socket-ID": socket ? socket.id : "" }
+  })
+  .then(r => r.json())
+  .then(data => {
+    if (data.running) {
+      // Bot is still running — show reconnect banner
+      showReconnectBanner(name, data.started_at);
+    }
+  })
+  .catch(() => {});
+}
+
+function showReconnectBanner(name, startedAt) {
+  // Create a reconnect notification at the top
+  const existing = document.getElementById("reconnect-banner");
+  if (existing) return;
+  const banner = document.createElement("div");
+  banner.id = "reconnect-banner";
+  const elapsed = startedAt ? Math.floor((Date.now()/1000 - startedAt) / 60) : "?";
+  banner.innerHTML = `
+    <div style="background:rgba(0,229,160,0.08);border:1px solid rgba(0,229,160,0.3);
+                border-radius:8px;padding:14px 20px;margin-bottom:16px;
+                display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <div>
+        <span style="color:var(--accent);font-weight:700">⚡ Bot is still running</span>
+        <span style="color:var(--dim);font-size:12px;margin-left:10px">
+          Started ${elapsed} minutes ago
+        </span>
+      </div>
+      <button onclick="resumeSession('${name}')"
+              style="background:var(--accent);color:#000;border:none;border-radius:6px;
+                     padding:8px 16px;font-family:'Syne',sans-serif;font-size:12px;
+                     font-weight:800;letter-spacing:1px;cursor:pointer">
+        Reconnect →
+      </button>
+    </div>`;
+  const wrapper = document.querySelector(".wrapper");
+  if (wrapper) wrapper.insertBefore(banner, wrapper.children[1]);
+}
+
+function resumeSession(name) {
+  // Remove banner
+  const banner = document.getElementById("reconnect-banner");
+  if (banner) banner.remove();
+  // Auto-fill name and re-verify license if saved
+  const saved = lsGet(LS_LIC_KEY);
+  if (saved && saved.name === name && saved.token) {
+    document.getElementById("lic-name").value  = saved.name;
+    document.getElementById("lic-token").value = saved.token;
+    // Trigger license verify then session will reconnect to existing bot
+    connectSession();
+  }
+}
+
+// ── SOCKET SETUP ─────────────────────────────────────────────────────────────
+function initSocket() {
+  // Connect explicitly to the Flask server.
+  // Works whether opened from localhost or another device on the network.
+  const serverUrl = window.location.origin;   // e.g. http://192.168.x.x:5000
+  socket = io(serverUrl, {
+    transports: ["polling", "websocket"],  // polling first on Render
+    reconnectionAttempts: 20,
+    reconnectionDelay: 1500,
+    reconnectionDelayMax: 5000,
+    path: "/socket.io",
+    upgrade: true,
+    timeout: 20000,
+  });
+
+  socket.on("connect", () => {
+    setBadge(true);
+    // Check if user has a bot still running from a previous session
+    const savedName = lsGet(LS_LIC_KEY)?.name;
+    if (savedName && !sessionActive) {
+      checkAndReconnect(savedName);
+    }
+  });
+
+  socket.on("disconnect", (reason) => {
+    setBadge(false);
+    setSessionStatus("DISCONNECTED");
+    console.warn("[socket] disconnected:", reason);
+  });
+
+  socket.on("connect_error", (err) => {
+    console.error("[socket] connect_error:", err.message);
+    setBadge(false);
+  });
+
+  socket.on("terminal_output", (data) => {
+    appendTerminal(data);
+
+    // Detect license rejection messages from server
+    if (data.includes("INVALID LICENSE") || data.includes("LICENSE EXPIRED")) {
+      showAlert("lic-error", data.trim());
+      unlockStep(1);
+    }
+  });
+}
+
+// ── BADGE ────────────────────────────────────────────────────────────────────
+function setBadge(connected) {
+  const badge = document.getElementById("conn-badge");
+  const text  = document.getElementById("conn-text");
+  badge.className = "conn-badge" + (connected ? " connected" : "");
+  text.textContent = connected ? "CONNECTED" : "DISCONNECTED";
+}
+
+// ── STEPS ────────────────────────────────────────────────────────────────────
+function setStep(n) {
+  for (let i = 1; i <= 4; i++) {
+    const el = document.getElementById(`step-${i}`);
+    if (!el) continue;
+    el.className = "step" + (i < n ? " done" : i === n ? " active" : "");
+    if (i < n) el.querySelector(".step-num").textContent = "✓";
+    else       el.querySelector(".step-num").textContent = i;
+  }
+}
+
+function unlockPanel(id) {
+  document.getElementById(id).classList.remove("locked");
+}
+
+function lockPanel(id) {
+  document.getElementById(id).classList.add("locked");
+}
+
+function unlockStep(n) {
+  setStep(n);
+}
+
+// ── ALERTS ───────────────────────────────────────────────────────────────────
+function showAlert(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.classList.add("show");
+}
+
+function hideAlert(id) {
+  document.getElementById(id).classList.remove("show");
+}
+
+function clearAlerts(...ids) {
+  ids.forEach(hideAlert);
+}
+
+function shakeInput(id) {
+  const el = document.getElementById(id);
+  el.classList.add("error-field");
+  setTimeout(() => el.classList.remove("error-field"), 1500);
+}
+
+// ── STEP 1: LICENSE ───────────────────────────────────────────────────────────
+function connectSession() {
+  const name  = document.getElementById("lic-name").value.trim();
+  const token = document.getElementById("lic-token").value.trim().toUpperCase();
+  const remember = document.getElementById("lic-remember").checked;
+
+  clearAlerts("lic-error", "lic-success");
+
+  if (!name)  { shakeInput("lic-name");  showAlert("lic-error", "Username is required."); return; }
+  if (!token) { shakeInput("lic-token"); showAlert("lic-error", "License token is required."); return; }
+
+  if (!socket) initSocket();
+
+  const btn = document.getElementById("btn-connect");
+  btn.disabled = true;
+  btn.textContent = "Verifying…";
+
+  // Give socket time to connect then validate license
+  setTimeout(() => {
+    socket.emit("check_license", { name, token });
+
+    socket.once("license_result", (data) => {
+      if (!data.valid) {
+        showAlert("lic-error", "✗  " + (data.msg || "Invalid license"));
+        btn.disabled = false;
+        btn.textContent = "⌁ Verify & Connect";
+        currentUser = null;
+        if (lsGet(LS_LIC_KEY)) {
+          lsDel(LS_LIC_KEY);
+          document.getElementById("lic-forget-btn").style.display = "none";
+        }
+      } else {
+        if (remember) {
+          lsSet(LS_LIC_KEY, { name, token });
+          document.getElementById("lic-forget-btn").style.display = "inline";
+        } else {
+          lsDel(LS_LIC_KEY);
+          document.getElementById("lic-forget-btn").style.display = "none";
+        }
+        currentUser = name;
+        onLicenseVerified(name);
+      }
+    });
+  }, socket.connected ? 0 : 600);
+}
+
+function onLicenseVerified(name) {
+  sessionActive = true;
+
+  document.getElementById("lic-name").classList.add("success-field");
+  document.getElementById("lic-token").classList.add("success-field");
+  showAlert("lic-success", `✓  License valid — welcome, ${name}`);
+
+  document.getElementById("btn-connect").textContent = "✓ Verified";
+  document.getElementById("btn-connect").disabled = true;
+
+  // Unlock step 2 only — terminal stays hidden until config is done
+  setStep(2);
+  unlockPanel("panel-config");
+
+  document.getElementById("sess-user").textContent   = name;
+  document.getElementById("sess-status").textContent = "READY";
+  document.getElementById("session-bar").classList.add("show");
+
+  setBadge(true);
+}
+
+// ── STEP 2: DERIV VERIFICATION ────────────────────────────────────────────────
+function showDerivAlert(id, msg) {
+  ["deriv-verifying","deriv-ok","deriv-err"].forEach(x => {
+    document.getElementById(x).style.display = "none";
+  });
+  const el = document.getElementById(id);
+  if (msg) el.textContent = msg;
+  el.style.display = "block";
+}
+
+// ── STEP 2: VERIFY DERIV + SAVE CONFIG (ONE BUTTON) ──────────────────────────
+function verifyAndSave() {
+  const appId    = document.getElementById("cfg-app-id").value.trim();
+  const apiToken = document.getElementById("cfg-api-token").value.trim();
+  const remember = document.getElementById("cfg-remember").checked;
+
+  clearAlerts("cfg-error", "cfg-success");
+  ["deriv-verifying","deriv-ok","deriv-err"].forEach(x => {
+    document.getElementById(x).style.display = "none";
+  });
+
+  if (!appId)    { shakeInput("cfg-app-id");    showAlert("cfg-error", "App ID is required."); return; }
+  if (!apiToken) { shakeInput("cfg-api-token"); showAlert("cfg-error", "API Token is required."); return; }
+
+  const btn = document.getElementById("btn-verify-save");
+  btn.disabled = true;
+  btn.textContent = "Verifying…";
+
+  document.getElementById("deriv-verifying").style.display = "block";
+  document.getElementById("deriv-verifying-text").textContent = "⟳  Verifying with Deriv & saving…";
+
+  // Send to server — server verifies with Deriv then saves config.json
+  fetch("/verify_and_save", {
+    method:  "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Socket-ID":  socket ? socket.id : "",
+    },
+    body: JSON.stringify({ app_id: appId, api_token: apiToken }),
+  })
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById("deriv-verifying").style.display = "none";
+    if (data.ok) {
+      if (remember) {
+        lsSet(LS_CFG_KEY, { app_id: appId, api_token: apiToken });
+        document.getElementById("cfg-forget-btn").style.display = "inline";
+      } else {
+        lsDel(LS_CFG_KEY);
+        document.getElementById("cfg-forget-btn").style.display = "none";
+      }
+
+      const acctInfo = data.account ? ` — ${data.account}` : "";
+      showDerivAlert("deriv-ok", `✓  Verified${acctInfo} · config saved`);
+
+      document.getElementById("config-tag").className   = "panel-tag done-tag";
+      document.getElementById("config-tag").textContent = "Saved ✓";
+      document.getElementById("sess-config-status").textContent = "SAVED";
+      btn.textContent = "✓ Done";
+      configSaved = true;
+      onConfigDone();
+    } else {
+      showDerivAlert("deriv-err", `✗  ${data.error || "Verification failed"}`);
+      btn.disabled = false;
+      btn.textContent = "⊙ Verify & Save Config";
+    }
+  })
+  .catch(err => {
+    document.getElementById("deriv-verifying").style.display = "none";
+    showDerivAlert("deriv-err", `✗  Network error: ${err.message}`);
+    btn.disabled = false;
+    btn.textContent = "⊙ Verify & Save Config";
+  });
+}
+
+function skipConfig() {
+  document.getElementById("sess-config-status").textContent = "EXISTING";
+  document.getElementById("config-tag").className = "panel-tag done-tag";
+  document.getElementById("config-tag").textContent = "Skipped";
+  clearAlerts("cfg-error");
+  showAlert("cfg-success", "ℹ  Using existing config.json on server.");
+  onConfigDone();
+}
+
+function onConfigDone() {
+  setStep(3);
+  // Unlock bot settings panel — don't start session yet
+  unlockPanel("panel-bot-settings");
+  document.getElementById("panel-bot-settings")
+    .scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function toggleStakeMode() {
+  const isManual = document.getElementById("mode-manual").checked;
+  document.getElementById("manual-settings").style.display = isManual ? "block" : "none";
+}
+
+function startBot() {
+  const stakeMode = document.querySelector('input[name="stake-mode"]:checked').value;
+  const maxTrades = parseInt(document.getElementById("bot-max-trades").value) || 2;
+  const maxSymbols = parseInt(document.getElementById("bot-max-symbols").value) || 1;
+
+  let stake = 0, maxTp = 0, maxSl = 0;
+
+  if (stakeMode === "manual") {
+    stake  = parseFloat(document.getElementById("bot-stake").value);
+    maxTp  = parseFloat(document.getElementById("bot-tp").value);
+    maxSl  = parseFloat(document.getElementById("bot-sl").value);
+    if (!stake || stake <= 0) {
+      showAlert("bot-settings-error", "Enter a valid stake amount."); return;
+    }
+    if (!maxTp || maxTp <= 0) {
+      showAlert("bot-settings-error", "Enter a valid take profit."); return;
+    }
+    if (!maxSl || maxSl <= 0) {
+      showAlert("bot-settings-error", "Enter a valid stop loss."); return;
+    }
+  }
+
+  clearAlerts("bot-settings-error");
+
+  const btn = document.getElementById("btn-start-bot");
+  btn.disabled = true;
+  btn.textContent = "Starting…";
+
+  // Step 4 — show terminal
+  setStep(4);
+  document.getElementById("terminal-locked").style.display = "none";
+  document.getElementById("terminal-wrap").classList.add("show");
+  document.getElementById("terminal-title").textContent = `terminal — ${currentUser}`;
+  document.getElementById("sess-status").textContent = "ACTIVE";
+  document.getElementById("bot-settings-tag").textContent = "Running ✓";
+  document.getElementById("bot-settings-tag").className = "panel-tag done-tag";
+
+  initTerm();
+  showControls();
+
+  // 1. Start the bot process (it will wait for the command file)
+  const token = document.getElementById("lic-token").value.trim().toUpperCase();
+  socket.emit("start_session", { name: currentUser, token });
+
+  // 2. Send startup settings — wait for bot to signal it's ready
+  //    Bot prints "Waiting for settings" once it starts — we listen for that
+  //    then send the command. Falls back to 3s timeout if output never arrives.
+  let cmdSent = false;
+
+  function _sendStartCmd() {
+    if (cmdSent) return;
+    cmdSent = true;
+    socket.emit("send_command", {
+      action:          "start",
+      stake_mode:      stakeMode,
+      stake:           stake,
+      max_tp:          maxTp,
+      max_sl:          maxSl,
+      max_open_trades: maxTrades,
+      max_symbols:     maxSymbols,
+    });
+    if (term) term.focus();
+    console.log("[bot] startup command sent");
+  }
+
+  // Listen for the bot's "waiting" message then send immediately
+  const _startListener = (data) => {
+    if (data && (data.includes("Waiting for settings") || data.includes("waiting"))) {
+      socket.off("terminal_output", _startListener);
+      setTimeout(_sendStartCmd, 200); // tiny delay after seeing the message
+    }
+  };
+  socket.on("terminal_output", _startListener);
+
+  // Fallback: send after 3 seconds regardless (in case output was missed)
+  setTimeout(() => {
+    socket.off("terminal_output", _startListener);
+    _sendStartCmd();
+  }, 3000);
+}
+
+// ── TRADING CONTROLS ─────────────────────────────────────────────────────────
+const cmdHistory = [];
+
+function step(inputId, dir) {
+  const el  = document.getElementById(inputId);
+  const val = parseFloat(el.value) || 0;
+  const inc = parseFloat(el.step) || 1;
+  el.value  = Math.max(0, val + dir * inc).toFixed(2);
+}
+
+function flash(flashId, msg) {
+  const el = document.getElementById(flashId);
+  el.textContent = msg;
+  el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 2000);
+}
+
+function addHistory(cmd) {
+  const now  = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+  cmdHistory.unshift({ cmd, time: now });
+  if (cmdHistory.length > 20) cmdHistory.pop();
+
+  const list = document.getElementById("cmd-history");
+  list.innerHTML = cmdHistory.map(h => `
+    <div class="cmd-chip" onclick="fillFromHistory('${h.cmd.replace(/'/g,"\\'")}')">
+      <span>${h.cmd}</span>
+      <span class="cmd-time">${h.time}</span>
+    </div>
+  `).join("");
+}
+
+function fillFromHistory(cmd) {
+  if (!currentUser || !socket) return;
+  // Re-send the command from history
+  const parts  = cmd.split(":");
+  const action = parts[0];
+  const value  = parts[1] ? parseFloat(parts[1]) : undefined;
+  socket.emit("send_command", { action, value });
+  if (term) {
+    term.write("\r\n\x1b[32m❯\x1b[0m " + cmd + "\r\n");
+    term.focus();
+  }
+}
+
+function sendCmd(type) {
+  if (!currentUser || !socket) return;
+
+  let val, cmd, flashId;
+
+  if (type === "stake") {
+    val     = document.getElementById("ctrl-stake").value.trim();
+    flashId = "flash-stake";
+    if (!val || isNaN(val) || parseFloat(val) <= 0) {
+      flash(flashId, "✗ enter a valid amount");
+      return;
+    }
+    cmd = `stake:${parseFloat(val).toFixed(2)}`;
+
+  } else if (type === "tp") {
+    val     = document.getElementById("ctrl-tp").value.trim();
+    flashId = "flash-tp";
+    if (!val || isNaN(val) || parseFloat(val) < 0) {
+      flash(flashId, "✗ enter a valid amount");
+      return;
+    }
+    cmd = `tp:${parseFloat(val).toFixed(2)}`;
+
+  } else if (type === "sl") {
+    val     = document.getElementById("ctrl-sl").value.trim();
+    flashId = "flash-sl";
+    if (!val || isNaN(val) || parseFloat(val) < 0) {
+      flash(flashId, "✗ enter a valid amount");
+      return;
+    }
+    cmd = `sl:${parseFloat(val).toFixed(2)}`;
+  }
+
+  // Parse cmd format "action:value" and send via command file
+  const parts  = cmd.split(":");
+  const action = parts[0];
+  const value  = parts[1] ? parseFloat(parts[1]) : undefined;
+
+  socket.emit("send_command", { action, value });
+  socket.once("command_ack", (ack) => {
+    if (ack.ok) {
+      if (term) term.write("\r\n\x1b[32m❯\x1b[0m " + cmd + "\r\n");
+      flash(flashId, "✓ sent");
+    } else {
+      flash(flashId, "✗ " + (ack.error || "failed"));
+    }
+  });
+  addHistory(cmd);
+}
+
+function showControls() {
+  document.getElementById("controls-panel").classList.add("show");
+}
+
+function hideControls() {
+  document.getElementById("controls-panel").classList.remove("show");
+}
+
+// ── XTERM TERMINAL ────────────────────────────────────────────────────────────
+let term     = null;
+let termSize = 11; // default font size — smaller so scripts display properly
+
+function initTerm() {
+  if (term) return;
+
+  term = new Terminal({
+    cursorBlink:  true,
+    cursorStyle:  "block",
+    fontFamily:   "'IBM Plex Mono', 'Fira Code', monospace",
+    fontSize:     termSize,
+    lineHeight:   1.4,
+    scrollback:   5000,
+    convertEol:   true,
+    cols:         120,   // wider default so tables/menus don't wrap
+    theme: {
+      background:   "#000000",
+      foreground:   "#c8d8e8",
+      cursor:       "#00e5a0",
+      cursorAccent: "#000000",
+      black:        "#090c10",
+      red:          "#ff4d6d",
+      green:        "#00e5a0",
+      yellow:       "#ffbd2e",
+      blue:         "#00a8ff",
+      magenta:      "#c678dd",
+      cyan:         "#56b6c2",
+      white:        "#c8d8e8",
+      brightBlack:  "#4a6070",
+      brightRed:    "#ff6b81",
+      brightGreen:  "#00ffb3",
+      brightYellow: "#ffd460",
+      brightBlue:   "#33bcff",
+      brightMagenta:"#d98fe8",
+      brightCyan:   "#6bc8d4",
+      brightWhite:  "#ffffff",
+    },
+  });
+
+  term.open(document.getElementById("xterm-container"));
+  term.focus();
+
+  // Every keystroke goes straight to the PTY
+  term.onData(data => {
+    if (currentUser && socket) {
+      socket.emit("terminal_input", { name: currentUser, key: data });
+    }
+  });
+}
+
+function termFontSize(delta) {
+  if (!term) return;
+  termSize = Math.max(7, Math.min(24, termSize + delta));
+  term.options.fontSize = termSize;
+}
+
+function termFit() {
+  if (!term) return;
+  // Calculate how many cols/rows fit the container
+  const container = document.getElementById("xterm-container");
+  const cellW = term._core._renderService.dimensions.css.cell.width  || 8;
+  const cellH = term._core._renderService.dimensions.css.cell.height || 17;
+  const cols  = Math.max(40, Math.floor((container.clientWidth  - 20) / cellW));
+  const rows  = Math.max(10, Math.floor((container.clientHeight - 10) / cellH));
+  term.resize(cols, rows);
+  // Also nudge font size down if cols are still wrapping
+  const titleEl = document.getElementById("terminal-title");
+  const prev = titleEl.textContent;
+  titleEl.textContent = `${cols}×${rows} @ ${termSize}px`;
+  setTimeout(() => { titleEl.textContent = prev; }, 2000);
+}
+
+function appendTerminal(text) {
+  if (term) term.write(text);
+}
+
+function clearTerminal() {
+  if (term) term.clear();
+}
+
+// stub — terminal-input element no longer exists, kept for safety
+function handleTermInput() {}
+
+// ── STOP SESSION ─────────────────────────────────────────────────────────────
+function stopSession() {
+  if (!currentUser || !socket) return;
+  socket.emit("stop_session", { name: currentUser });
+
+  sessionActive = false;
+  document.getElementById("sess-status").textContent = "STOPPED";
+  document.getElementById("session-bar").classList.remove("show");
+  document.getElementById("btn-connect").disabled = false;
+  document.getElementById("btn-connect").textContent = "⌁ Verify & Connect";
+  document.getElementById("lic-name").classList.remove("success-field");
+  document.getElementById("lic-token").classList.remove("success-field");
+  clearAlerts("lic-success");
+
+  lockPanel("panel-config");
+  lockPanel("panel-bot-settings");
+  hideControls();
+  setStep(1);
+
+  currentUser = null;
+  configSaved = false;
+}
+
+function setSessionStatus(s) {
+  const el = document.getElementById("sess-status");
+  if (el) el.textContent = s;
+}
+
+// ── STAKE CALCULATOR ─────────────────────────────────────────────────────────
+function runCalc() {
+  const bal = parseFloat(document.getElementById("calc-balance").value);
+  const resultsEl = document.getElementById("calc-results");
+
+  if (!bal || bal <= 0) {
+    resultsEl.style.display = "none";
+    return;
+  }
+
+  const sl    = +(bal * 0.05).toFixed(2);
+  const tp    = +(bal * 0.10).toFixed(2);
+  const stake = +(tp  * 0.10).toFixed(2);
+
+  document.getElementById("cv-stake").textContent = "$" + stake.toFixed(2);
+  document.getElementById("cv-tp").textContent    = "$" + tp.toFixed(2);
+  document.getElementById("cv-sl").textContent    = "$" + sl.toFixed(2);
+
+  document.getElementById("calc-note").innerHTML =
+    `With a <strong style="color:var(--text);">$${bal.toFixed(2)}</strong> balance — ` +
+    `stake <strong style="color:var(--accent);">$${stake.toFixed(2)}</strong> per trade. ` +
+    `<strong style="color:var(--accent2);">10 winning</strong> trades reach your TP of <strong style="color:var(--accent2);">$${tp.toFixed(2)}</strong>. ` +
+    `<strong style="color:var(--warn);">5 losing</strong> trades hit your SL of <strong style="color:var(--warn);">$${sl.toFixed(2)}</strong>. ` +
+    `Stop trading for the day if SL is reached.`;
+
+  resultsEl.style.display = "block";
+}
+
+// ── INIT ─────────────────────────────────────────────────────────────────────
+// 1. Prefill from localStorage immediately (no network needed)
+autofillSaved();
+
+// 2. Connect socket first — we need socket.id before making HTTP requests
+initSocket();
+
+// 3. Once connected, fetch this user's server-side config using the socket ID
+//    so the server can distinguish this user from all other connected users.
+socket.on("connect", () => {
+  fetch("/get_config", {
+    headers: { "X-Socket-ID": socket.id },
+  })
+    .then(r => r.json())
+    .then(cfg => {
+      const appIdEl    = document.getElementById("cfg-app-id");
+      const apiTokenEl = document.getElementById("cfg-api-token");
+      if (cfg.app_id    && cfg.app_id    !== appIdEl.value)    appIdEl.value    = cfg.app_id;
+      if (cfg.api_token && cfg.api_token !== apiTokenEl.value) apiTokenEl.value = cfg.api_token;
+    })
+    .catch(() => {
+      // Server not reachable yet — localStorage prefill is fine
+    });
+});
+</script>
+</body>
+</html>
