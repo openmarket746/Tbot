@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: tbot
+    runtime: python
+    region: oregon
+    plan: free
+
+    buildCommand: pip install -r requirements.txt
+    startCommand: >-
+      gunicorn
+      -k gthread
+      --threads 4
+      -w 1
+      --bind 0.0.0.0:10000
+      --timeout 120
+      --access-logfile -
+      --error-logfile -
+      --log-level info
+      --capture-output
+      front:app
+
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: PORT
+        value: "10000"
+      - key: PYTHONIOENCODING
+        value: "utf-8"
