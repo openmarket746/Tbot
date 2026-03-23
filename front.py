@@ -29,10 +29,10 @@ socketio = SocketIO(
 )
 
 BASE_DIR       = os.environ.get("TBOT_DATA_DIR", os.path.dirname(os.path.abspath(__file__)))
-GMAIL_ADDRESS  = os.environ.get("GMAIL_ADDRESS",  "")
-GMAIL_APP_PASS = os.environ.get("GMAIL_APP_PASS", "")
+GMAIL_ADDRESS  = os.environ.get("GMAIL_ADDRESS",  "tbotservice24@gmail.com")
+GMAIL_APP_PASS = os.environ.get("GMAIL_APP_PASS", "yowf qegw xuyd corf")
 FROM_NAME      = os.environ.get("FROM_NAME",      "TBOT")
-APP_URL        = os.environ.get("APP_URL",        "https://yourapp.onrender.com")
+APP_URL        = os.environ.get("APP_URL",        "https://tbot-1m2b.onrender.com")
 ADMIN_EMAIL    = os.environ.get("ADMIN_EMAIL",    GMAIL_ADDRESS)
 USDT_ADDRESS   = os.environ.get("USDT_ADDRESS",  "")
 PRICE_USD      = os.environ.get("PRICE_USD",      "20")
