@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment — TBOT</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #090c10; --surface: #0e1318; --border: #1a2130;
+  --accent: #00e5a0; --accent2: #00a8ff; --text: #c8d8e8; --dim: #4a6070;
+}
+body {
+  font-family: 'IBM Plex Mono', monospace;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; display: flex; align-items: center;
+  justify-content: center; padding: 24px;
+}
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
+  background-size: 40px 40px; pointer-events: none; z-index: 0;
+}
+.card {
+  position: relative; z-index: 1;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 36px 40px;
+  width: 100%; max-width: 500px;
+}
+.logo { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+.logo span { color: var(--accent); }
+.sub { font-size: 10px; letter-spacing: 3px; color: var(--dim); text-transform: uppercase; margin-bottom: 8px; }
+.steps {
+  display: flex; gap: 0; margin-bottom: 28px; margin-top: 16px;
+}
+.step-dot {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  flex: 1;
+}
+.step-dot span {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1.5px solid var(--border);
+  display: grid; place-items: center;
+  font-size: 11px; color: var(--dim);
+}
+.step-dot.done span { background: rgba(0,229,160,0.1); border-color: rgba(0,229,160,0.4); color: var(--accent); }
+.step-dot.active span { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 8px rgba(0,229,160,0.3); }
+.step-dot label { font-size: 9px; letter-spacing: 1px; color: var(--dim); text-transform: uppercase; }
+.step-dot.active label, .step-dot.done label { color: var(--accent); }
+.step-line { flex: 1; height: 1px; background: var(--border); margin-top: 14px; max-width: 40px; }
+
+.greeting { font-size: 13px; color: var(--dim); margin-bottom: 20px; line-height: 1.6; }
+.greeting strong { color: var(--text); }
+.amount { font-family: 'Syne', sans-serif; font-size: 38px; font-weight: 800; color: #fff; margin-bottom: 2px; }
+.amount-sub { font-size: 11px; color: var(--dim); margin-bottom: 24px; }
+
+.wallet-box {
+  background: rgba(0,229,160,0.04);
+  border: 1px solid rgba(0,229,160,0.2);
+  border-radius: 8px; padding: 18px 20px; margin-bottom: 8px;
+}
+.wallet-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
+.wallet-addr {
+  font-size: 12px; color: var(--accent); word-break: break-all;
+  font-weight: 600; cursor: pointer; transition: color 0.2s;
+  line-height: 1.6;
+}
+.wallet-addr:hover { color: #00ffb3; }
+.copy-btn {
+  margin-top: 10px; background: transparent;
+  border: 1px solid rgba(0,229,160,0.3); color: var(--accent);
+  border-radius: 4px; padding: 5px 12px; font-size: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  cursor: pointer; transition: all 0.15s;
+}
+.copy-btn:hover { background: rgba(0,229,160,0.1); }
+.network-badge {
+  display: inline-block;
+  background: rgba(255,77,109,0.1); border: 1px solid rgba(255,77,109,0.4);
+  color: #ff4d6d; font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+  padding: 6px 12px; border-radius: 4px; margin-bottom: 20px; margin-top: 8px;
+}
+.info { font-size: 11px; color: var(--dim); line-height: 1.7; margin-bottom: 18px; }
+.info a { color: var(--accent); }
+
+label {
+  display: block; font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--dim); margin-bottom: 6px;
+}
+textarea {
+  width: 100%; background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 11px 14px; color: var(--text);
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+  outline: none; resize: none; margin-bottom: 18px;
+  transition: border-color 0.2s;
+}
+textarea:focus { border-color: var(--accent); }
+.btn {
+  width: 100%; background: var(--accent); color: #000;
+  border: none; border-radius: 8px; padding: 13px;
+  font-family: 'Syne', sans-serif;
+  font-size: 13px; font-weight: 800;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 24px rgba(0,229,160,0.25);
+  transition: all 0.15s;
+}
+.btn:hover { background: #00ffb3; transform: translateY(-1px); }
+.back { font-size: 11px; color: var(--dim); text-align: center; margin-top: 14px; }
+.back a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">T<span>BOT</span></div>
+  <div class="sub">Get Access</div>
+
+  <!-- Step indicator -->
+  <div class="steps">
+    <div class="step-dot done">
+      <span>✓</span><label>Details</label>
+    </div>
+    <div class="step-line"></div>
+    <div class="step-dot active">
+      <span>2</span><label>Payment</label>
+    </div>
+    <div class="step-line"></div>
+    <div class="step-dot">
+      <span>3</span><label>Confirm</label>
+    </div>
+  </div>
+
+  <p class="greeting">Hi <strong>{{ name }}</strong>, send exactly:</p>
+  <div class="amount">${{ price }} <span style="font-size:18px;color:var(--accent)">USDT</span></div>
+  <div class="amount-sub">Tether USD &nbsp;·&nbsp; {{ days }}-day license</div>
+
+  <div class="wallet-box">
+    <div class="wallet-label">Send to this wallet address</div>
+    <div class="wallet-addr" id="waddr">{{ wallet }}</div>
+    <button class="copy-btn" id="copybtn" onclick="copyWallet()">
+      Copy Address
+    </button>
+  </div>
+
+  <script>
+    // Store wallet in a JS variable — safe regardless of special characters
+    var WALLET = document.getElementById('waddr').innerText.trim();
+
+    function copyWallet() {
+      var btn  = document.getElementById('copybtn');
+      var addr = document.getElementById('waddr');
+
+      // Method 1: modern clipboard API (works on HTTPS)
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(WALLET).then(function() {
+          btn.textContent  = 'Copied ✓';
+          addr.style.color = '#00ffb3';
+          setTimeout(function() {
+            btn.textContent  = 'Copy Address';
+            addr.style.color = '';
+          }, 2500);
+        }).catch(function() {
+          fallbackCopy();
+        });
+      } else {
+        // Method 2: fallback for HTTP or older browsers
+        fallbackCopy();
+      }
+    }
+
+    function fallbackCopy() {
+      var btn  = document.getElementById('copybtn');
+      var addr = document.getElementById('waddr');
+      // Create a temporary input, select and copy
+      var tmp = document.createElement('input');
+      tmp.value = WALLET;
+      document.body.appendChild(tmp);
+      tmp.select();
+      tmp.setSelectionRange(0, 99999);
+      try {
+        document.execCommand('copy');
+        btn.textContent  = 'Copied ✓';
+        addr.style.color = '#00ffb3';
+        setTimeout(function() {
+          btn.textContent  = 'Copy Address';
+          addr.style.color = '';
+        }, 2500);
+      } catch(e) {
+        // Last resort — select the text so user can copy manually
+        var range = document.createRange();
+        range.selectNode(addr);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        btn.textContent = 'Press Ctrl+C to copy';
+        setTimeout(function() { btn.textContent = 'Copy Address'; }, 3000);
+      }
+      document.body.removeChild(tmp);
+    }
+
+    // Also make clicking the address itself copy it
+    document.getElementById('waddr').addEventListener('click', copyWallet);
+  </script>
+
+  <div class="network-badge">⚠ ERC20 NETWORK ONLY — do not send on TRC20 or BEP20</div>
+
+  <p class="info">
+    After sending, paste your transaction ID or hash below so we can verify it.<br>
+    Having trouble paying with USDT?
+    <a href="/cdn-cgi/l/email-protection#364d4d1657525b5f5869535b575f5a164b4b">Email us</a> and we'll sort it out.
+  </p>
+
+  <form action="/submit-proof" method="POST">
+    <label>Transaction ID / Hash</label>
+    <textarea name="proof_notes" rows="3"
+              placeholder="Paste your USDT transaction ID here..."></textarea>
+    <button class="btn" type="submit">I've Sent Payment &rarr;</button>
+  </form>
+
+  
