@@ -57,7 +57,7 @@ UPDATE_INTERVAL = 2 * 60  # 5 minutes
 PING_INTERVAL = 10       # seconds (keepalive)
 
 # Bot call configuration
-BOT_SCRIPT = "5min_tbot.py"        # path to bot script
+BOT_SCRIPT = "5min_Tbot.py"        # path to bot script
 CALL_BOT_ON_UPDATE = True
 CALL_BOT_ON_EACH_SYMBOL = False
 
