@@ -1,0 +1,4277 @@
+[
+  {
+    "timestamp": 1773934581,
+    "symbol": "1HZ25V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.7,
+    "ten_sell": 0.3,
+    "curr_buy": 0.6364,
+    "norm_disp": 0.358,
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.665,
+        "upper": 0.06,
+        "lower": 0.276
+      },
+      {
+        "dir": 1,
+        "body": 0.327,
+        "upper": 0.673,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.597,
+        "upper": 0.192,
+        "lower": 0.212
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.671,
+        "upper": 0.145,
+        "lower": 0.185
+      },
+      {
+        "dir": 1,
+        "body": 0.391,
+        "upper": 0.139,
+        "lower": 0.47
+      },
+      {
+        "dir": -1,
+        "body": 0.775,
+        "upper": 0.142,
+        "lower": 0.084
+      },
+      {
+        "dir": 1,
+        "body": 0.806,
+        "upper": 0.132,
+        "lower": 0.062
+      },
+      {
+        "dir": 1,
+        "body": 0.5,
+        "upper": 0.33,
+        "lower": 0.17
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 849889.137023,
+      "ema_slow": 849795.714227,
+      "atr_val": 463.841717,
+      "htf_rsi": 56.37
+    },
+    "pnl": -50.0,
+    "won": false,
+    "closed_at": 1773934910
+  },
+  {
+    "timestamp": 1773936909,
+    "symbol": "JD25",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.2,
+    "norm_disp": -0.496,
+    "chart_pattern": "Bullish(body:25% up:med-36% dn:med-38%)  Bullish(body:2% up:long-81% dn:small-16%)  Bearish(body:24% up:small-18% dn:long-57%)  Bullish(body:37% up:small-18% dn:long-43%)  Bearish(body:43% up:small-5% dn:long-51%)  Bullish(body:99% up:no-1% dn:no-0%)  Bearish(body:94% up:small-5% dn:no-0%)  Bearish(body:36% up:no-0% dn:long-63%)  Bearish(body:54% up:small-7% dn:med-38%)  Bearish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.255,
+        "upper": 0.36,
+        "lower": 0.385
+      },
+      {
+        "dir": 1,
+        "body": 0.021,
+        "upper": 0.816,
+        "lower": 0.163
+      },
+      {
+        "dir": -1,
+        "body": 0.244,
+        "upper": 0.185,
+        "lower": 0.571
+      },
+      {
+        "dir": 1,
+        "body": 0.373,
+        "upper": 0.189,
+        "lower": 0.439
+      },
+      {
+        "dir": -1,
+        "body": 0.434,
+        "upper": 0.05,
+        "lower": 0.516
+      },
+      {
+        "dir": 1,
+        "body": 0.99,
+        "upper": 0.01,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.945,
+        "upper": 0.055,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.361,
+        "upper": 0.0,
+        "lower": 0.639
+      },
+      {
+        "dir": -1,
+        "body": 0.547,
+        "upper": 0.071,
+        "lower": 0.382
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 131558.188375,
+      "ema_slow": 131626.464469,
+      "atr_val": 63.361206,
+      "htf_rsi": 43.22
+    },
+    "pnl": -47.0,
+    "won": false,
+    "closed_at": 1773937222
+  },
+  {
+    "timestamp": 1773936908,
+    "symbol": "JD25",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.2222,
+    "norm_disp": -0.337,
+    "chart_pattern": "Bullish(body:25% up:med-36% dn:med-38%)  Bullish(body:2% up:long-81% dn:small-16%)  Bearish(body:24% up:small-18% dn:long-57%)  Bullish(body:37% up:small-18% dn:long-43%)  Bearish(body:43% up:small-5% dn:long-51%)  Bullish(body:99% up:no-1% dn:no-0%)  Bearish(body:94% up:small-5% dn:no-0%)  Bearish(body:36% up:no-0% dn:long-63%)  Bearish(body:54% up:small-7% dn:med-38%)  Bearish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.255,
+        "upper": 0.36,
+        "lower": 0.385
+      },
+      {
+        "dir": 1,
+        "body": 0.021,
+        "upper": 0.816,
+        "lower": 0.163
+      },
+      {
+        "dir": -1,
+        "body": 0.244,
+        "upper": 0.185,
+        "lower": 0.571
+      },
+      {
+        "dir": 1,
+        "body": 0.373,
+        "upper": 0.189,
+        "lower": 0.439
+      },
+      {
+        "dir": -1,
+        "body": 0.434,
+        "upper": 0.05,
+        "lower": 0.516
+      },
+      {
+        "dir": 1,
+        "body": 0.99,
+        "upper": 0.01,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.945,
+        "upper": 0.055,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.361,
+        "upper": 0.0,
+        "lower": 0.639
+      },
+      {
+        "dir": -1,
+        "body": 0.547,
+        "upper": 0.071,
+        "lower": 0.382
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 131558.188375,
+      "ema_slow": 131626.464469,
+      "atr_val": 63.361206,
+      "htf_rsi": 43.22
+    },
+    "pnl": -47.0,
+    "won": false,
+    "closed_at": 1773937222
+  },
+  {
+    "timestamp": 1773936887,
+    "symbol": "1HZ25V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.7,
+    "ten_sell": 0.3,
+    "curr_buy": 0.5833,
+    "norm_disp": 0.333,
+    "chart_pattern": "Bullish(body:72% up:no-0% dn:med-27%)  Bearish(body:91% up:small-8% dn:no-0%)  Bearish(body:45% up:med-22% dn:med-31%)  Bullish(body:6% up:long-81% dn:small-12%)  Bullish(body:51% up:long-48% dn:no-0%)  Bullish(body:25% up:long-71% dn:no-3%)  Bullish(body:79% up:no-3% dn:small-17%)  Bearish(body:1% up:long-98% dn:no-0%)  Bullish(body:4% up:long-42% dn:long-53%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.725,
+        "upper": 0.0,
+        "lower": 0.275
+      },
+      {
+        "dir": -1,
+        "body": 0.912,
+        "upper": 0.088,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.457,
+        "upper": 0.229,
+        "lower": 0.313
+      },
+      {
+        "dir": 1,
+        "body": 0.06,
+        "upper": 0.816,
+        "lower": 0.124
+      },
+      {
+        "dir": 1,
+        "body": 0.517,
+        "upper": 0.483,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.253,
+        "upper": 0.712,
+        "lower": 0.035
+      },
+      {
+        "dir": 1,
+        "body": 0.794,
+        "upper": 0.036,
+        "lower": 0.17
+      },
+      {
+        "dir": -1,
+        "body": 0.018,
+        "upper": 0.982,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.046,
+        "upper": 0.423,
+        "lower": 0.532
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 850416.299993,
+      "ema_slow": 850184.064094,
+      "atr_val": 422.72944,
+      "htf_rsi": 69.44
+    },
+    "pnl": -47.0,
+    "won": false,
+    "closed_at": 1773937279
+  },
+  {
+    "timestamp": 1773936910,
+    "symbol": "JD25",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.2727,
+    "norm_disp": -0.415,
+    "chart_pattern": "Bullish(body:25% up:med-36% dn:med-38%)  Bullish(body:2% up:long-81% dn:small-16%)  Bearish(body:24% up:small-18% dn:long-57%)  Bullish(body:37% up:small-18% dn:long-43%)  Bearish(body:43% up:small-5% dn:long-51%)  Bullish(body:99% up:no-1% dn:no-0%)  Bearish(body:94% up:small-5% dn:no-0%)  Bearish(body:36% up:no-0% dn:long-63%)  Bearish(body:54% up:small-7% dn:med-38%)  Bearish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.255,
+        "upper": 0.36,
+        "lower": 0.385
+      },
+      {
+        "dir": 1,
+        "body": 0.021,
+        "upper": 0.816,
+        "lower": 0.163
+      },
+      {
+        "dir": -1,
+        "body": 0.244,
+        "upper": 0.185,
+        "lower": 0.571
+      },
+      {
+        "dir": 1,
+        "body": 0.373,
+        "upper": 0.189,
+        "lower": 0.439
+      },
+      {
+        "dir": -1,
+        "body": 0.434,
+        "upper": 0.05,
+        "lower": 0.516
+      },
+      {
+        "dir": 1,
+        "body": 0.99,
+        "upper": 0.01,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.945,
+        "upper": 0.055,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.361,
+        "upper": 0.0,
+        "lower": 0.639
+      },
+      {
+        "dir": -1,
+        "body": 0.547,
+        "upper": 0.071,
+        "lower": 0.382
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 131558.188375,
+      "ema_slow": 131626.464469,
+      "atr_val": 63.361206,
+      "htf_rsi": 43.22
+    },
+    "pnl": -47.0,
+    "won": false,
+    "closed_at": 1773937311
+  },
+  {
+    "timestamp": 1773939011,
+    "symbol": "stpRNG3",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.6,
+    "ten_sell": 0.4,
+    "curr_buy": 0.7778,
+    "norm_disp": 0.351,
+    "chart_pattern": "Bullish(body:14% up:long-57% dn:med-28%)  Bullish(body:75% up:no-0% dn:med-25%)  Bearish(body:50% up:small-14% dn:med-35%)  Bullish(body:10% up:long-40% dn:long-50%)  Bearish(body:45% up:no-0% dn:long-54%)  Bullish(body:81% up:small-18% dn:no-0%)  Bearish(body:11% up:long-77% dn:small-11%)  Bullish(body:41% up:small-5% dn:long-52%)  Bearish(body:87% up:no-0% dn:small-12%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.143,
+        "upper": 0.571,
+        "lower": 0.286
+      },
+      {
+        "dir": 1,
+        "body": 0.75,
+        "upper": 0.0,
+        "lower": 0.25
+      },
+      {
+        "dir": -1,
+        "body": 0.5,
+        "upper": 0.143,
+        "lower": 0.357
+      },
+      {
+        "dir": 1,
+        "body": 0.1,
+        "upper": 0.4,
+        "lower": 0.5
+      },
+      {
+        "dir": -1,
+        "body": 0.455,
+        "upper": 0.0,
+        "lower": 0.545
+      },
+      {
+        "dir": 1,
+        "body": 0.812,
+        "upper": 0.188,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.111,
+        "upper": 0.778,
+        "lower": 0.111
+      },
+      {
+        "dir": 1,
+        "body": 0.412,
+        "upper": 0.059,
+        "lower": 0.529
+      },
+      {
+        "dir": -1,
+        "body": 0.875,
+        "upper": 0.0,
+        "lower": 0.125
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 11492.614213,
+      "ema_slow": 11491.20867,
+      "atr_val": 3.41531,
+      "htf_rsi": 65.21
+    },
+    "pnl": -10.0,
+    "won": false,
+    "closed_at": 1773939342
+  },
+  {
+    "timestamp": 1773939278,
+    "symbol": "stpRNG2",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.6,
+    "ten_sell": 0.4,
+    "curr_buy": 0.5641,
+    "norm_disp": 0.346,
+    "chart_pattern": "Bullish(body:38% up:long-46% dn:small-15%)  Bullish(body:62% up:small-12% dn:med-25%)  Bullish(body:83% up:small-11% dn:small-5%)  Bullish(body:58% up:small-8% dn:med-33%)  Bullish(body:55% up:long-44% dn:no-0%)  Bearish(body:55% up:long-40% dn:small-5%)  Bearish(body:84% up:small-15% dn:no-0%)  Bearish(body:69% up:med-30% dn:no-0%)  Bearish(body:76% up:small-5% dn:small-17%)  Doji(body:0% up:long-100% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.385,
+        "upper": 0.462,
+        "lower": 0.154
+      },
+      {
+        "dir": 1,
+        "body": 0.625,
+        "upper": 0.125,
+        "lower": 0.25
+      },
+      {
+        "dir": 1,
+        "body": 0.833,
+        "upper": 0.111,
+        "lower": 0.056
+      },
+      {
+        "dir": 1,
+        "body": 0.583,
+        "upper": 0.083,
+        "lower": 0.333
+      },
+      {
+        "dir": 1,
+        "body": 0.556,
+        "upper": 0.444,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.55,
+        "upper": 0.4,
+        "lower": 0.05
+      },
+      {
+        "dir": -1,
+        "body": 0.846,
+        "upper": 0.154,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.692,
+        "upper": 0.308,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.765,
+        "upper": 0.059,
+        "lower": 0.176
+      },
+      {
+        "dir": 0,
+        "body": 0.0,
+        "upper": 1.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 10564.522151,
+      "ema_slow": 10563.815316,
+      "atr_val": 2.314801,
+      "htf_rsi": 53.14
+    },
+    "pnl": -10.0,
+    "won": false,
+    "closed_at": 1773939595
+  },
+  {
+    "timestamp": 1773939266,
+    "symbol": "stpRNG2",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.6,
+    "ten_sell": 0.4,
+    "curr_buy": 0.5926,
+    "norm_disp": 0.346,
+    "chart_pattern": "Bullish(body:38% up:long-46% dn:small-15%)  Bullish(body:62% up:small-12% dn:med-25%)  Bullish(body:83% up:small-11% dn:small-5%)  Bullish(body:58% up:small-8% dn:med-33%)  Bullish(body:55% up:long-44% dn:no-0%)  Bearish(body:55% up:long-40% dn:small-5%)  Bearish(body:84% up:small-15% dn:no-0%)  Bearish(body:69% up:med-30% dn:no-0%)  Bearish(body:76% up:small-5% dn:small-17%)  Doji(body:0% up:long-100% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.385,
+        "upper": 0.462,
+        "lower": 0.154
+      },
+      {
+        "dir": 1,
+        "body": 0.625,
+        "upper": 0.125,
+        "lower": 0.25
+      },
+      {
+        "dir": 1,
+        "body": 0.833,
+        "upper": 0.111,
+        "lower": 0.056
+      },
+      {
+        "dir": 1,
+        "body": 0.583,
+        "upper": 0.083,
+        "lower": 0.333
+      },
+      {
+        "dir": 1,
+        "body": 0.556,
+        "upper": 0.444,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.55,
+        "upper": 0.4,
+        "lower": 0.05
+      },
+      {
+        "dir": -1,
+        "body": 0.846,
+        "upper": 0.154,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.692,
+        "upper": 0.308,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.765,
+        "upper": 0.059,
+        "lower": 0.176
+      },
+      {
+        "dir": 0,
+        "body": 0.0,
+        "upper": 1.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 10564.522151,
+      "ema_slow": 10563.815316,
+      "atr_val": 2.314801,
+      "htf_rsi": 53.14
+    },
+    "pnl": -10.0,
+    "won": false,
+    "closed_at": 1773939649
+  },
+  {
+    "timestamp": 1773940388,
+    "symbol": "1HZ10V",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.2222,
+    "norm_disp": -0.39,
+    "chart_pattern": "Bearish(body:3% up:long-81% dn:small-15%)  Bullish(body:29% up:med-38% dn:med-31%)  Bullish(body:47% up:small-12% dn:med-39%)  Bearish(body:54% up:small-17% dn:med-28%)  Bearish(body:81% up:small-18% dn:no-0%)  Bullish(body:26% up:small-8% dn:long-64%)  Bullish(body:4% up:long-73% dn:med-22%)  Bearish(body:64% up:med-35% dn:no-0%)  Bearish(body:91% up:small-7% dn:no-0%)  Bearish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.037,
+        "upper": 0.81,
+        "lower": 0.153
+      },
+      {
+        "dir": 1,
+        "body": 0.299,
+        "upper": 0.387,
+        "lower": 0.314
+      },
+      {
+        "dir": 1,
+        "body": 0.478,
+        "upper": 0.124,
+        "lower": 0.397
+      },
+      {
+        "dir": -1,
+        "body": 0.54,
+        "upper": 0.175,
+        "lower": 0.285
+      },
+      {
+        "dir": -1,
+        "body": 0.814,
+        "upper": 0.186,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.263,
+        "upper": 0.089,
+        "lower": 0.648
+      },
+      {
+        "dir": 1,
+        "body": 0.04,
+        "upper": 0.734,
+        "lower": 0.226
+      },
+      {
+        "dir": -1,
+        "body": 0.642,
+        "upper": 0.358,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.919,
+        "upper": 0.074,
+        "lower": 0.007
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 9731.574514,
+      "ema_slow": 9732.860249,
+      "atr_val": 1.716044,
+      "htf_rsi": 33.75
+    },
+    "pnl": -5.0,
+    "won": false,
+    "closed_at": 1773940691
+  },
+  {
+    "timestamp": 1773940389,
+    "symbol": "1HZ10V",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.2,
+    "norm_disp": -0.624,
+    "chart_pattern": "Bearish(body:3% up:long-81% dn:small-15%)  Bullish(body:29% up:med-38% dn:med-31%)  Bullish(body:47% up:small-12% dn:med-39%)  Bearish(body:54% up:small-17% dn:med-28%)  Bearish(body:81% up:small-18% dn:no-0%)  Bullish(body:26% up:small-8% dn:long-64%)  Bullish(body:4% up:long-73% dn:med-22%)  Bearish(body:64% up:med-35% dn:no-0%)  Bearish(body:91% up:small-7% dn:no-0%)  Bearish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.037,
+        "upper": 0.81,
+        "lower": 0.153
+      },
+      {
+        "dir": 1,
+        "body": 0.299,
+        "upper": 0.387,
+        "lower": 0.314
+      },
+      {
+        "dir": 1,
+        "body": 0.478,
+        "upper": 0.124,
+        "lower": 0.397
+      },
+      {
+        "dir": -1,
+        "body": 0.54,
+        "upper": 0.175,
+        "lower": 0.285
+      },
+      {
+        "dir": -1,
+        "body": 0.814,
+        "upper": 0.186,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.263,
+        "upper": 0.089,
+        "lower": 0.648
+      },
+      {
+        "dir": 1,
+        "body": 0.04,
+        "upper": 0.734,
+        "lower": 0.226
+      },
+      {
+        "dir": -1,
+        "body": 0.642,
+        "upper": 0.358,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.919,
+        "upper": 0.074,
+        "lower": 0.007
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 9731.574514,
+      "ema_slow": 9732.860249,
+      "atr_val": 1.716044,
+      "htf_rsi": 33.75
+    },
+    "pnl": -5.0,
+    "won": false,
+    "closed_at": 1773940691
+  },
+  {
+    "timestamp": 1774016024,
+    "symbol": "JD10",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.6,
+    "ten_sell": 0.4,
+    "curr_buy": 0.0,
+    "norm_disp": 0.381,
+    "chart_pattern": "Bullish(body:21% up:long-44% dn:med-34%)  Bearish(body:45% up:med-30% dn:med-23%)  Bullish(body:69% up:med-20% dn:small-10%)  Bearish(body:21% up:long-69% dn:small-9%)  Bullish(body:67% up:med-30% dn:no-2%)  Bearish(body:4% up:med-23% dn:long-72%)  Bearish(body:62% up:med-29% dn:small-8%)  Bullish(body:8% up:long-57% dn:med-33%)  Bullish(body:1% up:med-34% dn:long-64%)  Bullish(body:59% up:small-19% dn:med-20%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.211,
+        "upper": 0.446,
+        "lower": 0.342
+      },
+      {
+        "dir": -1,
+        "body": 0.453,
+        "upper": 0.308,
+        "lower": 0.239
+      },
+      {
+        "dir": 1,
+        "body": 0.693,
+        "upper": 0.203,
+        "lower": 0.104
+      },
+      {
+        "dir": -1,
+        "body": 0.212,
+        "upper": 0.695,
+        "lower": 0.094
+      },
+      {
+        "dir": 1,
+        "body": 0.676,
+        "upper": 0.303,
+        "lower": 0.021
+      },
+      {
+        "dir": -1,
+        "body": 0.046,
+        "upper": 0.23,
+        "lower": 0.724
+      },
+      {
+        "dir": -1,
+        "body": 0.624,
+        "upper": 0.291,
+        "lower": 0.085
+      },
+      {
+        "dir": 1,
+        "body": 0.089,
+        "upper": 0.58,
+        "lower": 0.33
+      },
+      {
+        "dir": 1,
+        "body": 0.012,
+        "upper": 0.342,
+        "lower": 0.646
+      },
+      {
+        "dir": 1,
+        "body": 0.594,
+        "upper": 0.199,
+        "lower": 0.206
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 97912.22224,
+      "ema_slow": 97911.759787,
+      "atr_val": 17.604907,
+      "htf_rsi": 57.13
+    },
+    "_source": "fallback",
+    "pnl": -89.44,
+    "won": false,
+    "closed_at": 1774016024
+  },
+  {
+    "timestamp": 1774016568,
+    "symbol": "1HZ100V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": null,
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": null,
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.6,
+    "ten_sell": 0.4,
+    "curr_buy": 0.0,
+    "norm_disp": 0.543,
+    "chart_pattern": "Bearish(body:85% up:small-14% dn:no-0%)  Bullish(body:31% up:no-0% dn:long-68%)  Bearish(body:47% up:med-39% dn:small-13%)  Bearish(body:37% up:long-43% dn:small-19%)  Bearish(body:76% up:med-23% dn:no-0%)  Bullish(body:40% up:long-44% dn:small-15%)  Bullish(body:39% up:no-0% dn:long-60%)  Bullish(body:30% up:long-64% dn:small-5%)  Bullish(body:45% up:small-11% dn:long-43%)  Bullish(body:46% up:long-54% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.852,
+        "upper": 0.148,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.318,
+        "upper": 0.0,
+        "lower": 0.682
+      },
+      {
+        "dir": -1,
+        "body": 0.473,
+        "upper": 0.391,
+        "lower": 0.136
+      },
+      {
+        "dir": -1,
+        "body": 0.372,
+        "upper": 0.432,
+        "lower": 0.196
+      },
+      {
+        "dir": -1,
+        "body": 0.764,
+        "upper": 0.236,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.406,
+        "upper": 0.44,
+        "lower": 0.154
+      },
+      {
+        "dir": 1,
+        "body": 0.396,
+        "upper": 0.0,
+        "lower": 0.604
+      },
+      {
+        "dir": 1,
+        "body": 0.304,
+        "upper": 0.645,
+        "lower": 0.051
+      },
+      {
+        "dir": 1,
+        "body": 0.456,
+        "upper": 0.114,
+        "lower": 0.431
+      },
+      {
+        "dir": 1,
+        "body": 0.46,
+        "upper": 0.54,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 1665.064042,
+      "ema_slow": 1664.727136,
+      "atr_val": 3.464912,
+      "htf_rsi": null
+    },
+    "_source": "fallback",
+    "pnl": -89.44,
+    "won": false,
+    "closed_at": 1774016568
+  },
+  {
+    "timestamp": 1774022305,
+    "symbol": "R_50",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.4,
+    "norm_disp": -0.306,
+    "chart_pattern": "Bearish(body:56% up:no-0% dn:long-43%)  Bearish(body:3% up:long-73% dn:med-22%)  Bearish(body:1% up:long-48% dn:long-49%)  Bearish(body:56% up:no-0% dn:long-43%)  Bullish(body:40% up:med-33% dn:med-25%)  Bearish(body:34% up:med-24% dn:long-40%)  Bullish(body:65% up:med-34% dn:no-0%)  Bullish(body:68% up:no-0% dn:med-31%)  Bullish(body:42% up:no-0% dn:long-57%)  Bearish(body:80% up:small-19% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.566,
+        "upper": 0.0,
+        "lower": 0.434
+      },
+      {
+        "dir": -1,
+        "body": 0.035,
+        "upper": 0.736,
+        "lower": 0.229
+      },
+      {
+        "dir": -1,
+        "body": 0.017,
+        "upper": 0.485,
+        "lower": 0.498
+      },
+      {
+        "dir": -1,
+        "body": 0.567,
+        "upper": 0.0,
+        "lower": 0.433
+      },
+      {
+        "dir": 1,
+        "body": 0.405,
+        "upper": 0.339,
+        "lower": 0.255
+      },
+      {
+        "dir": -1,
+        "body": 0.343,
+        "upper": 0.248,
+        "lower": 0.408
+      },
+      {
+        "dir": 1,
+        "body": 0.653,
+        "upper": 0.347,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.684,
+        "upper": 0.0,
+        "lower": 0.316
+      },
+      {
+        "dir": 1,
+        "body": 0.425,
+        "upper": 0.0,
+        "lower": 0.575
+      },
+      {
+        "dir": -1,
+        "body": 0.802,
+        "upper": 0.198,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 103.728269,
+      "ema_slow": 103.83101,
+      "atr_val": 0.085165,
+      "htf_rsi": 44.06
+    },
+    "pnl": -5.63,
+    "won": false,
+    "closed_at": 1774022313
+  },
+  {
+    "timestamp": 1774023957,
+    "symbol": "1HZ10V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.6,
+    "ten_sell": 0.4,
+    "curr_buy": 0.5614,
+    "norm_disp": 0.422,
+    "chart_pattern": "Bullish(body:4% up:long-95% dn:no-0%)  Bearish(body:15% up:med-38% dn:long-45%)  Bearish(body:39% up:no-0% dn:long-60%)  Bullish(body:48% up:small-14% dn:med-37%)  Bearish(body:27% up:long-54% dn:small-17%)  Bullish(body:100% up:no-0% dn:no-0%)  Bullish(body:52% up:long-43% dn:no-4%)  Bullish(body:5% up:long-51% dn:long-42%)  Bearish(body:39% up:no-3% dn:long-57%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.047,
+        "upper": 0.953,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.158,
+        "upper": 0.387,
+        "lower": 0.455
+      },
+      {
+        "dir": -1,
+        "body": 0.398,
+        "upper": 0.0,
+        "lower": 0.602
+      },
+      {
+        "dir": 1,
+        "body": 0.486,
+        "upper": 0.14,
+        "lower": 0.374
+      },
+      {
+        "dir": -1,
+        "body": 0.274,
+        "upper": 0.547,
+        "lower": 0.179
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.52,
+        "upper": 0.434,
+        "lower": 0.046
+      },
+      {
+        "dir": 1,
+        "body": 0.058,
+        "upper": 0.513,
+        "lower": 0.429
+      },
+      {
+        "dir": -1,
+        "body": 0.394,
+        "upper": 0.031,
+        "lower": 0.575
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 9718.209016,
+      "ema_slow": 9717.854987,
+      "atr_val": 1.846934,
+      "htf_rsi": 51.98
+    },
+    "pnl": -91.84,
+    "won": false,
+    "closed_at": 1774024261
+  },
+  {
+    "timestamp": 1774023958,
+    "symbol": "1HZ10V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.6,
+    "ten_sell": 0.4,
+    "curr_buy": 0.569,
+    "norm_disp": 0.449,
+    "chart_pattern": "Bullish(body:4% up:long-95% dn:no-0%)  Bearish(body:15% up:med-38% dn:long-45%)  Bearish(body:39% up:no-0% dn:long-60%)  Bullish(body:48% up:small-14% dn:med-37%)  Bearish(body:27% up:long-54% dn:small-17%)  Bullish(body:100% up:no-0% dn:no-0%)  Bullish(body:52% up:long-43% dn:no-4%)  Bullish(body:5% up:long-51% dn:long-42%)  Bearish(body:39% up:no-3% dn:long-57%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.047,
+        "upper": 0.953,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.158,
+        "upper": 0.387,
+        "lower": 0.455
+      },
+      {
+        "dir": -1,
+        "body": 0.398,
+        "upper": 0.0,
+        "lower": 0.602
+      },
+      {
+        "dir": 1,
+        "body": 0.486,
+        "upper": 0.14,
+        "lower": 0.374
+      },
+      {
+        "dir": -1,
+        "body": 0.274,
+        "upper": 0.547,
+        "lower": 0.179
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.52,
+        "upper": 0.434,
+        "lower": 0.046
+      },
+      {
+        "dir": 1,
+        "body": 0.058,
+        "upper": 0.513,
+        "lower": 0.429
+      },
+      {
+        "dir": -1,
+        "body": 0.394,
+        "upper": 0.031,
+        "lower": 0.575
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 9718.209016,
+      "ema_slow": 9717.854987,
+      "atr_val": 1.846934,
+      "htf_rsi": 51.98
+    },
+    "pnl": -91.84,
+    "won": false,
+    "closed_at": 1774024348
+  },
+  {
+    "timestamp": 1774074365,
+    "symbol": "JD10",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.1667,
+    "norm_disp": -0.536,
+    "chart_pattern": "Bearish(body:29% up:small-17% dn:long-53%)  Bearish(body:29% up:no-0% dn:long-70%)  Bullish(body:8% up:small-17% dn:long-74%)  Bearish(body:99% up:no-0% dn:no-0%)  Bearish(body:90% up:small-9% dn:no-0%)  Bearish(body:28% up:long-55% dn:small-16%)  Bullish(body:50% up:med-33% dn:small-15%)  Bullish(body:48% up:small-10% dn:long-40%)  Bullish(body:79% up:med-20% dn:no-0%)  Bearish(body:18% up:no-0% dn:long-81%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.293,
+        "upper": 0.177,
+        "lower": 0.53
+      },
+      {
+        "dir": -1,
+        "body": 0.297,
+        "upper": 0.0,
+        "lower": 0.703
+      },
+      {
+        "dir": 1,
+        "body": 0.086,
+        "upper": 0.171,
+        "lower": 0.743
+      },
+      {
+        "dir": -1,
+        "body": 0.999,
+        "upper": 0.0,
+        "lower": 0.001
+      },
+      {
+        "dir": -1,
+        "body": 0.909,
+        "upper": 0.091,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.289,
+        "upper": 0.55,
+        "lower": 0.161
+      },
+      {
+        "dir": 1,
+        "body": 0.504,
+        "upper": 0.338,
+        "lower": 0.158
+      },
+      {
+        "dir": 1,
+        "body": 0.487,
+        "upper": 0.107,
+        "lower": 0.406
+      },
+      {
+        "dir": 1,
+        "body": 0.792,
+        "upper": 0.208,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.187,
+        "upper": 0.0,
+        "lower": 0.813
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 97896.924652,
+      "ema_slow": 97909.861623,
+      "atr_val": 19.729488,
+      "htf_rsi": 35.93
+    },
+    "pnl": -91.72,
+    "won": false,
+    "closed_at": 1774074667
+  },
+  {
+    "timestamp": 1774110870,
+    "symbol": "stpRNG3",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.5,
+    "ten_sell": 0.5,
+    "curr_buy": 0.4815,
+    "norm_disp": -0.087,
+    "chart_pattern": "Bearish(body:84% up:small-7% dn:small-7%)  Bullish(body:45% up:small-18% dn:med-36%)  Bullish(body:6% up:long-80% dn:small-13%)  Bullish(body:85% up:no-0% dn:small-15%)  Bullish(body:53% up:med-30% dn:small-15%)  Bearish(body:42% up:med-28% dn:med-28%)  Bearish(body:27% up:small-18% dn:long-54%)  Bearish(body:91% up:small-8% dn:no-0%)  Bullish(body:64% up:small-5% dn:med-29%)  Bearish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.846,
+        "upper": 0.077,
+        "lower": 0.077
+      },
+      {
+        "dir": 1,
+        "body": 0.455,
+        "upper": 0.182,
+        "lower": 0.364
+      },
+      {
+        "dir": 1,
+        "body": 0.067,
+        "upper": 0.8,
+        "lower": 0.133
+      },
+      {
+        "dir": 1,
+        "body": 0.85,
+        "upper": 0.0,
+        "lower": 0.15
+      },
+      {
+        "dir": 1,
+        "body": 0.538,
+        "upper": 0.308,
+        "lower": 0.154
+      },
+      {
+        "dir": -1,
+        "body": 0.429,
+        "upper": 0.286,
+        "lower": 0.286
+      },
+      {
+        "dir": -1,
+        "body": 0.273,
+        "upper": 0.182,
+        "lower": 0.545
+      },
+      {
+        "dir": -1,
+        "body": 0.917,
+        "upper": 0.083,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.647,
+        "upper": 0.059,
+        "lower": 0.294
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 11437.743893,
+      "ema_slow": 11432.995264,
+      "atr_val": 3.465951,
+      "htf_rsi": 65.99
+    },
+    "_source": "fallback",
+    "pnl": -92.07,
+    "won": false,
+    "closed_at": 1774110870
+  },
+  {
+    "timestamp": 1774111036,
+    "symbol": "1HZ15V",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": true,
+      "rsi_bucket": "OS",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.5,
+    "ten_sell": 0.5,
+    "curr_buy": 0.4667,
+    "norm_disp": -0.022,
+    "chart_pattern": "Bearish(body:71% up:small-13% dn:small-15%)  Bullish(body:46% up:no-0% dn:long-53%)  Bearish(body:65% up:no-0% dn:med-34%)  Bearish(body:60% up:med-22% dn:small-17%)  Bullish(body:49% up:no-3% dn:long-47%)  Bullish(body:49% up:long-48% dn:no-1%)  Bullish(body:86% up:no-1% dn:small-12%)  Bearish(body:28% up:no-0% dn:long-71%)  Bullish(body:84% up:small-15% dn:no-0%)  Bearish(body:27% up:long-72% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.712,
+        "upper": 0.137,
+        "lower": 0.151
+      },
+      {
+        "dir": 1,
+        "body": 0.466,
+        "upper": 0.0,
+        "lower": 0.534
+      },
+      {
+        "dir": -1,
+        "body": 0.651,
+        "upper": 0.0,
+        "lower": 0.349
+      },
+      {
+        "dir": -1,
+        "body": 0.604,
+        "upper": 0.223,
+        "lower": 0.172
+      },
+      {
+        "dir": 1,
+        "body": 0.497,
+        "upper": 0.034,
+        "lower": 0.47
+      },
+      {
+        "dir": 1,
+        "body": 0.494,
+        "upper": 0.489,
+        "lower": 0.017
+      },
+      {
+        "dir": 1,
+        "body": 0.861,
+        "upper": 0.011,
+        "lower": 0.128
+      },
+      {
+        "dir": -1,
+        "body": 0.286,
+        "upper": 0.0,
+        "lower": 0.714
+      },
+      {
+        "dir": 1,
+        "body": 0.846,
+        "upper": 0.154,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.272,
+        "upper": 0.728,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 12680.386868,
+      "ema_slow": 12685.732613,
+      "atr_val": 3.646756,
+      "htf_rsi": 28.6
+    },
+    "_source": "fallback",
+    "pnl": -92.07,
+    "won": false,
+    "closed_at": 1774111036
+  },
+  {
+    "timestamp": 1774111039,
+    "symbol": "JD100",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.6,
+    "ten_sell": 0.4,
+    "curr_buy": 0.5882,
+    "norm_disp": 0.329,
+    "chart_pattern": "Bullish(body:16% up:long-58% dn:med-25%)  Bearish(body:84% up:small-15% dn:no-0%)  Bullish(body:42% up:small-7% dn:long-50%)  Bearish(body:94% up:no-1% dn:no-4%)  Bullish(body:98% up:no-0% dn:no-2%)  Bearish(body:68% up:med-31% dn:no-0%)  Bullish(body:91% up:no-3% dn:small-5%)  Bullish(body:22% up:med-25% dn:long-52%)  Bearish(body:22% up:long-45% dn:med-31%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.164,
+        "upper": 0.582,
+        "lower": 0.254
+      },
+      {
+        "dir": -1,
+        "body": 0.849,
+        "upper": 0.151,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.42,
+        "upper": 0.074,
+        "lower": 0.506
+      },
+      {
+        "dir": -1,
+        "body": 0.943,
+        "upper": 0.011,
+        "lower": 0.046
+      },
+      {
+        "dir": 1,
+        "body": 0.98,
+        "upper": 0.0,
+        "lower": 0.02
+      },
+      {
+        "dir": -1,
+        "body": 0.683,
+        "upper": 0.317,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.914,
+        "upper": 0.034,
+        "lower": 0.052
+      },
+      {
+        "dir": 1,
+        "body": 0.225,
+        "upper": 0.254,
+        "lower": 0.521
+      },
+      {
+        "dir": -1,
+        "body": 0.228,
+        "upper": 0.456,
+        "lower": 0.316
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 391.709785,
+      "ema_slow": 391.325209,
+      "atr_val": 0.912789,
+      "htf_rsi": 60.68
+    },
+    "pnl": -92.07,
+    "won": false,
+    "closed_at": 1774111342
+  },
+  {
+    "timestamp": 1774111040,
+    "symbol": "JD100",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.6,
+    "ten_sell": 0.4,
+    "curr_buy": 0.6111,
+    "norm_disp": 0.34,
+    "chart_pattern": "Bullish(body:16% up:long-58% dn:med-25%)  Bearish(body:84% up:small-15% dn:no-0%)  Bullish(body:42% up:small-7% dn:long-50%)  Bearish(body:94% up:no-1% dn:no-4%)  Bullish(body:98% up:no-0% dn:no-2%)  Bearish(body:68% up:med-31% dn:no-0%)  Bullish(body:91% up:no-3% dn:small-5%)  Bullish(body:22% up:med-25% dn:long-52%)  Bearish(body:22% up:long-45% dn:med-31%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.164,
+        "upper": 0.582,
+        "lower": 0.254
+      },
+      {
+        "dir": -1,
+        "body": 0.849,
+        "upper": 0.151,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.42,
+        "upper": 0.074,
+        "lower": 0.506
+      },
+      {
+        "dir": -1,
+        "body": 0.943,
+        "upper": 0.011,
+        "lower": 0.046
+      },
+      {
+        "dir": 1,
+        "body": 0.98,
+        "upper": 0.0,
+        "lower": 0.02
+      },
+      {
+        "dir": -1,
+        "body": 0.683,
+        "upper": 0.317,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.914,
+        "upper": 0.034,
+        "lower": 0.052
+      },
+      {
+        "dir": 1,
+        "body": 0.225,
+        "upper": 0.254,
+        "lower": 0.521
+      },
+      {
+        "dir": -1,
+        "body": 0.228,
+        "upper": 0.456,
+        "lower": 0.316
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 391.709785,
+      "ema_slow": 391.325209,
+      "atr_val": 0.912789,
+      "htf_rsi": 60.68
+    },
+    "pnl": -92.07,
+    "won": false,
+    "closed_at": 1774111343
+  },
+  {
+    "timestamp": 1774401133,
+    "symbol": "JD10",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.7,
+    "ten_sell": 0.3,
+    "curr_buy": 0.7143,
+    "norm_disp": 0.538,
+    "chart_pattern": "Bullish(body:94% up:small-5% dn:no-0%)  Bullish(body:86% up:small-13% dn:no-0%)  Bullish(body:62% up:no-2% dn:med-34%)  Bullish(body:34% up:small-16% dn:long-48%)  Bearish(body:93% up:small-6% dn:no-0%)  Bullish(body:68% up:med-24% dn:small-7%)  Bearish(body:25% up:med-34% dn:med-39%)  Bullish(body:60% up:med-20% dn:small-19%)  Bearish(body:53% up:small-9% dn:med-36%)  Bullish(body:30% up:no-0% dn:long-69%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.942,
+        "upper": 0.058,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.861,
+        "upper": 0.139,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.626,
+        "upper": 0.026,
+        "lower": 0.348
+      },
+      {
+        "dir": 1,
+        "body": 0.349,
+        "upper": 0.168,
+        "lower": 0.484
+      },
+      {
+        "dir": -1,
+        "body": 0.938,
+        "upper": 0.062,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.682,
+        "upper": 0.241,
+        "lower": 0.077
+      },
+      {
+        "dir": -1,
+        "body": 0.254,
+        "upper": 0.346,
+        "lower": 0.399
+      },
+      {
+        "dir": 1,
+        "body": 0.6,
+        "upper": 0.203,
+        "lower": 0.197
+      },
+      {
+        "dir": -1,
+        "body": 0.538,
+        "upper": 0.095,
+        "lower": 0.367
+      },
+      {
+        "dir": 1,
+        "body": 0.302,
+        "upper": 0.0,
+        "lower": 0.698
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 98332.332562,
+      "ema_slow": 98312.080488,
+      "atr_val": 18.80041,
+      "htf_rsi": 57.31
+    },
+    "pnl": -92.31,
+    "won": false,
+    "closed_at": 1774401736
+  },
+  {
+    "timestamp": 1774401134,
+    "symbol": "JD10",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.7,
+    "ten_sell": 0.3,
+    "curr_buy": 0.6667,
+    "norm_disp": 0.46,
+    "chart_pattern": "Bullish(body:94% up:small-5% dn:no-0%)  Bullish(body:86% up:small-13% dn:no-0%)  Bullish(body:62% up:no-2% dn:med-34%)  Bullish(body:34% up:small-16% dn:long-48%)  Bearish(body:93% up:small-6% dn:no-0%)  Bullish(body:68% up:med-24% dn:small-7%)  Bearish(body:25% up:med-34% dn:med-39%)  Bullish(body:60% up:med-20% dn:small-19%)  Bearish(body:53% up:small-9% dn:med-36%)  Bullish(body:30% up:no-0% dn:long-69%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.942,
+        "upper": 0.058,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.861,
+        "upper": 0.139,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.626,
+        "upper": 0.026,
+        "lower": 0.348
+      },
+      {
+        "dir": 1,
+        "body": 0.349,
+        "upper": 0.168,
+        "lower": 0.484
+      },
+      {
+        "dir": -1,
+        "body": 0.938,
+        "upper": 0.062,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.682,
+        "upper": 0.241,
+        "lower": 0.077
+      },
+      {
+        "dir": -1,
+        "body": 0.254,
+        "upper": 0.346,
+        "lower": 0.399
+      },
+      {
+        "dir": 1,
+        "body": 0.6,
+        "upper": 0.203,
+        "lower": 0.197
+      },
+      {
+        "dir": -1,
+        "body": 0.538,
+        "upper": 0.095,
+        "lower": 0.367
+      },
+      {
+        "dir": 1,
+        "body": 0.302,
+        "upper": 0.0,
+        "lower": 0.698
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 98332.332562,
+      "ema_slow": 98312.080488,
+      "atr_val": 18.80041,
+      "htf_rsi": 57.31
+    },
+    "pnl": -92.31,
+    "won": false,
+    "closed_at": 1774401738
+  },
+  {
+    "timestamp": 1774401136,
+    "symbol": "1HZ15V",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.4118,
+    "norm_disp": -0.316,
+    "chart_pattern": "Bullish(body:41% up:small-17% dn:long-41%)  Bearish(body:30% up:long-51% dn:small-18%)  Bearish(body:82% up:small-15% dn:no-1%)  Bearish(body:41% up:med-29% dn:med-29%)  Bullish(body:22% up:small-13% dn:long-64%)  Bearish(body:81% up:small-5% dn:small-12%)  Bullish(body:30% up:small-19% dn:long-49%)  Bullish(body:62% up:med-37% dn:no-0%)  Bearish(body:81% up:small-8% dn:small-10%)  Bearish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.416,
+        "upper": 0.174,
+        "lower": 0.41
+      },
+      {
+        "dir": -1,
+        "body": 0.303,
+        "upper": 0.513,
+        "lower": 0.185
+      },
+      {
+        "dir": -1,
+        "body": 0.824,
+        "upper": 0.159,
+        "lower": 0.017
+      },
+      {
+        "dir": -1,
+        "body": 0.413,
+        "upper": 0.294,
+        "lower": 0.292
+      },
+      {
+        "dir": 1,
+        "body": 0.222,
+        "upper": 0.134,
+        "lower": 0.643
+      },
+      {
+        "dir": -1,
+        "body": 0.818,
+        "upper": 0.053,
+        "lower": 0.129
+      },
+      {
+        "dir": 1,
+        "body": 0.306,
+        "upper": 0.198,
+        "lower": 0.496
+      },
+      {
+        "dir": 1,
+        "body": 0.623,
+        "upper": 0.377,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.81,
+        "upper": 0.085,
+        "lower": 0.105
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 12694.109965,
+      "ema_slow": 12697.873612,
+      "atr_val": 3.27047,
+      "htf_rsi": 37.54
+    },
+    "pnl": -92.31,
+    "won": false,
+    "closed_at": 1774401738
+  },
+  {
+    "timestamp": 1774401127,
+    "symbol": "JD10",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.7,
+    "ten_sell": 0.3,
+    "curr_buy": 0.875,
+    "norm_disp": 0.311,
+    "chart_pattern": "Bullish(body:94% up:small-5% dn:no-0%)  Bullish(body:86% up:small-13% dn:no-0%)  Bullish(body:62% up:no-2% dn:med-34%)  Bullish(body:34% up:small-16% dn:long-48%)  Bearish(body:93% up:small-6% dn:no-0%)  Bullish(body:68% up:med-24% dn:small-7%)  Bearish(body:25% up:med-34% dn:med-39%)  Bullish(body:60% up:med-20% dn:small-19%)  Bearish(body:53% up:small-9% dn:med-36%)  Bullish(body:30% up:no-0% dn:long-69%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.942,
+        "upper": 0.058,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.861,
+        "upper": 0.139,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.626,
+        "upper": 0.026,
+        "lower": 0.348
+      },
+      {
+        "dir": 1,
+        "body": 0.349,
+        "upper": 0.168,
+        "lower": 0.484
+      },
+      {
+        "dir": -1,
+        "body": 0.938,
+        "upper": 0.062,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.682,
+        "upper": 0.241,
+        "lower": 0.077
+      },
+      {
+        "dir": -1,
+        "body": 0.254,
+        "upper": 0.346,
+        "lower": 0.399
+      },
+      {
+        "dir": 1,
+        "body": 0.6,
+        "upper": 0.203,
+        "lower": 0.197
+      },
+      {
+        "dir": -1,
+        "body": 0.538,
+        "upper": 0.095,
+        "lower": 0.367
+      },
+      {
+        "dir": 1,
+        "body": 0.302,
+        "upper": 0.0,
+        "lower": 0.698
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 98332.332562,
+      "ema_slow": 98312.080488,
+      "atr_val": 18.80041,
+      "htf_rsi": 57.31
+    },
+    "pnl": -92.31,
+    "won": false,
+    "closed_at": 1774401827
+  },
+  {
+    "timestamp": 1774401824,
+    "symbol": "stpRNG4",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.7,
+    "ten_sell": 0.3,
+    "curr_buy": 0.5556,
+    "norm_disp": 0.351,
+    "chart_pattern": "Bearish(body:58% up:med-25% dn:small-16%)  Bullish(body:45% up:small-9% dn:long-45%)  Bullish(body:14% up:long-71% dn:small-14%)  Bullish(body:25% up:small-8% dn:long-66%)  Bearish(body:50% up:med-21% dn:med-28%)  Bullish(body:21% up:med-28% dn:long-50%)  Bearish(body:42% up:small-14% dn:long-42%)  Bullish(body:64% up:med-28% dn:small-7%)  Bullish(body:90% up:small-9% dn:no-0%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.583,
+        "upper": 0.25,
+        "lower": 0.167
+      },
+      {
+        "dir": 1,
+        "body": 0.455,
+        "upper": 0.091,
+        "lower": 0.455
+      },
+      {
+        "dir": 1,
+        "body": 0.143,
+        "upper": 0.714,
+        "lower": 0.143
+      },
+      {
+        "dir": 1,
+        "body": 0.25,
+        "upper": 0.083,
+        "lower": 0.667
+      },
+      {
+        "dir": -1,
+        "body": 0.5,
+        "upper": 0.214,
+        "lower": 0.286
+      },
+      {
+        "dir": 1,
+        "body": 0.214,
+        "upper": 0.286,
+        "lower": 0.5
+      },
+      {
+        "dir": -1,
+        "body": 0.429,
+        "upper": 0.143,
+        "lower": 0.429
+      },
+      {
+        "dir": 1,
+        "body": 0.643,
+        "upper": 0.286,
+        "lower": 0.071
+      },
+      {
+        "dir": 1,
+        "body": 0.905,
+        "upper": 0.095,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 9893.357172,
+      "ema_slow": 9890.762569,
+      "atr_val": 4.563228,
+      "htf_rsi": 54.22
+    },
+    "pnl": -92.31,
+    "won": false,
+    "closed_at": 1774402427
+  },
+  {
+    "timestamp": 1774423696,
+    "symbol": "R_50",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.3,
+    "ten_sell": 0.7,
+    "curr_buy": 0.4444,
+    "norm_disp": -0.383,
+    "chart_pattern": "Bullish(body:58% up:small-6% dn:med-34%)  Bearish(body:49% up:small-6% dn:long-44%)  Bearish(body:31% up:long-52% dn:small-16%)  Bearish(body:74% up:med-25% dn:no-0%)  Bearish(body:20% up:long-74% dn:small-5%)  Bearish(body:38% up:long-52% dn:small-9%)  Bearish(body:36% up:long-47% dn:small-15%)  Bullish(body:29% up:small-9% dn:long-60%)  Bearish(body:78% up:small-18% dn:no-3%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.587,
+        "upper": 0.065,
+        "lower": 0.348
+      },
+      {
+        "dir": -1,
+        "body": 0.499,
+        "upper": 0.061,
+        "lower": 0.44
+      },
+      {
+        "dir": -1,
+        "body": 0.313,
+        "upper": 0.526,
+        "lower": 0.161
+      },
+      {
+        "dir": -1,
+        "body": 0.746,
+        "upper": 0.254,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.2,
+        "upper": 0.742,
+        "lower": 0.059
+      },
+      {
+        "dir": -1,
+        "body": 0.383,
+        "upper": 0.521,
+        "lower": 0.096
+      },
+      {
+        "dir": -1,
+        "body": 0.368,
+        "upper": 0.474,
+        "lower": 0.157
+      },
+      {
+        "dir": 1,
+        "body": 0.296,
+        "upper": 0.097,
+        "lower": 0.607
+      },
+      {
+        "dir": -1,
+        "body": 0.784,
+        "upper": 0.184,
+        "lower": 0.032
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 105.858729,
+      "ema_slow": 106.001432,
+      "atr_val": 0.097754,
+      "htf_rsi": 31.31
+    },
+    "pnl": -93.28,
+    "won": false,
+    "closed_at": 1774424039
+  },
+  {
+    "timestamp": 1774597804,
+    "symbol": "1HZ25V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.7,
+    "ten_sell": 0.3,
+    "curr_buy": 0.6,
+    "norm_disp": 0.391,
+    "chart_pattern": "Bullish(body:45% up:long-54% dn:no-0%)  Bearish(body:6% up:long-50% dn:long-43%)  Bullish(body:69% up:no-2% dn:med-27%)  Bearish(body:55% up:med-30% dn:small-14%)  Bullish(body:95% up:no-0% dn:no-4%)  Bullish(body:44% up:med-22% dn:med-33%)  Bullish(body:13% up:long-75% dn:small-10%)  Bullish(body:84% up:small-15% dn:no-0%)  Bullish(body:49% up:small-10% dn:long-40%)  Bearish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.459,
+        "upper": 0.541,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.065,
+        "upper": 0.504,
+        "lower": 0.43
+      },
+      {
+        "dir": 1,
+        "body": 0.699,
+        "upper": 0.029,
+        "lower": 0.272
+      },
+      {
+        "dir": -1,
+        "body": 0.55,
+        "upper": 0.305,
+        "lower": 0.145
+      },
+      {
+        "dir": 1,
+        "body": 0.952,
+        "upper": 0.0,
+        "lower": 0.048
+      },
+      {
+        "dir": 1,
+        "body": 0.443,
+        "upper": 0.222,
+        "lower": 0.335
+      },
+      {
+        "dir": 1,
+        "body": 0.139,
+        "upper": 0.751,
+        "lower": 0.109
+      },
+      {
+        "dir": 1,
+        "body": 0.844,
+        "upper": 0.15,
+        "lower": 0.006
+      },
+      {
+        "dir": 1,
+        "body": 0.495,
+        "upper": 0.103,
+        "lower": 0.402
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 832911.465274,
+      "ema_slow": 832707.987087,
+      "atr_val": 389.181676,
+      "htf_rsi": 63.49
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774598107
+  },
+  {
+    "timestamp": 1774597805,
+    "symbol": "1HZ25V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.7,
+    "ten_sell": 0.3,
+    "curr_buy": 0.6667,
+    "norm_disp": 0.419,
+    "chart_pattern": "Bullish(body:45% up:long-54% dn:no-0%)  Bearish(body:6% up:long-50% dn:long-43%)  Bullish(body:69% up:no-2% dn:med-27%)  Bearish(body:55% up:med-30% dn:small-14%)  Bullish(body:95% up:no-0% dn:no-4%)  Bullish(body:44% up:med-22% dn:med-33%)  Bullish(body:13% up:long-75% dn:small-10%)  Bullish(body:84% up:small-15% dn:no-0%)  Bullish(body:49% up:small-10% dn:long-40%)  Bearish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.459,
+        "upper": 0.541,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.065,
+        "upper": 0.504,
+        "lower": 0.43
+      },
+      {
+        "dir": 1,
+        "body": 0.699,
+        "upper": 0.029,
+        "lower": 0.272
+      },
+      {
+        "dir": -1,
+        "body": 0.55,
+        "upper": 0.305,
+        "lower": 0.145
+      },
+      {
+        "dir": 1,
+        "body": 0.952,
+        "upper": 0.0,
+        "lower": 0.048
+      },
+      {
+        "dir": 1,
+        "body": 0.443,
+        "upper": 0.222,
+        "lower": 0.335
+      },
+      {
+        "dir": 1,
+        "body": 0.139,
+        "upper": 0.751,
+        "lower": 0.109
+      },
+      {
+        "dir": 1,
+        "body": 0.844,
+        "upper": 0.15,
+        "lower": 0.006
+      },
+      {
+        "dir": 1,
+        "body": 0.495,
+        "upper": 0.103,
+        "lower": 0.402
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 832911.465274,
+      "ema_slow": 832707.987087,
+      "atr_val": 389.181676,
+      "htf_rsi": 63.49
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774598107
+  },
+  {
+    "timestamp": 1774597806,
+    "symbol": "1HZ25V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.7,
+    "ten_sell": 0.3,
+    "curr_buy": 0.7143,
+    "norm_disp": 0.528,
+    "chart_pattern": "Bullish(body:45% up:long-54% dn:no-0%)  Bearish(body:6% up:long-50% dn:long-43%)  Bullish(body:69% up:no-2% dn:med-27%)  Bearish(body:55% up:med-30% dn:small-14%)  Bullish(body:95% up:no-0% dn:no-4%)  Bullish(body:44% up:med-22% dn:med-33%)  Bullish(body:13% up:long-75% dn:small-10%)  Bullish(body:84% up:small-15% dn:no-0%)  Bullish(body:49% up:small-10% dn:long-40%)  Bearish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.459,
+        "upper": 0.541,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.065,
+        "upper": 0.504,
+        "lower": 0.43
+      },
+      {
+        "dir": 1,
+        "body": 0.699,
+        "upper": 0.029,
+        "lower": 0.272
+      },
+      {
+        "dir": -1,
+        "body": 0.55,
+        "upper": 0.305,
+        "lower": 0.145
+      },
+      {
+        "dir": 1,
+        "body": 0.952,
+        "upper": 0.0,
+        "lower": 0.048
+      },
+      {
+        "dir": 1,
+        "body": 0.443,
+        "upper": 0.222,
+        "lower": 0.335
+      },
+      {
+        "dir": 1,
+        "body": 0.139,
+        "upper": 0.751,
+        "lower": 0.109
+      },
+      {
+        "dir": 1,
+        "body": 0.844,
+        "upper": 0.15,
+        "lower": 0.006
+      },
+      {
+        "dir": 1,
+        "body": 0.495,
+        "upper": 0.103,
+        "lower": 0.402
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 832911.465274,
+      "ema_slow": 832707.987087,
+      "atr_val": 389.181676,
+      "htf_rsi": 63.49
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774598108
+  },
+  {
+    "timestamp": 1774598168,
+    "symbol": "1HZ25V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.7,
+    "ten_sell": 0.3,
+    "curr_buy": 0.5556,
+    "norm_disp": 0.179,
+    "chart_pattern": "Bullish(body:13% up:long-75% dn:small-10%)  Bullish(body:84% up:small-15% dn:no-0%)  Bullish(body:49% up:small-10% dn:long-40%)  Bullish(body:74% up:small-6% dn:small-19%)  Bearish(body:91% up:no-2% dn:small-5%)  Bearish(body:67% up:small-17% dn:small-15%)  Bearish(body:21% up:no-2% dn:long-76%)  Bullish(body:66% up:no-0% dn:med-33%)  Bullish(body:20% up:no-0% dn:long-79%)  Bullish(body:78% up:no-0% dn:med-21%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.139,
+        "upper": 0.751,
+        "lower": 0.109
+      },
+      {
+        "dir": 1,
+        "body": 0.844,
+        "upper": 0.15,
+        "lower": 0.006
+      },
+      {
+        "dir": 1,
+        "body": 0.495,
+        "upper": 0.103,
+        "lower": 0.402
+      },
+      {
+        "dir": 1,
+        "body": 0.744,
+        "upper": 0.062,
+        "lower": 0.194
+      },
+      {
+        "dir": -1,
+        "body": 0.916,
+        "upper": 0.027,
+        "lower": 0.057
+      },
+      {
+        "dir": -1,
+        "body": 0.67,
+        "upper": 0.179,
+        "lower": 0.15
+      },
+      {
+        "dir": -1,
+        "body": 0.216,
+        "upper": 0.022,
+        "lower": 0.762
+      },
+      {
+        "dir": 1,
+        "body": 0.663,
+        "upper": 0.0,
+        "lower": 0.337
+      },
+      {
+        "dir": 1,
+        "body": 0.204,
+        "upper": 0.0,
+        "lower": 0.796
+      },
+      {
+        "dir": 1,
+        "body": 0.786,
+        "upper": 0.0,
+        "lower": 0.214
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 833054.014157,
+      "ema_slow": 832795.03951,
+      "atr_val": 417.381001,
+      "htf_rsi": 60.45
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774598536
+  },
+  {
+    "timestamp": 1774599485,
+    "symbol": "1HZ50V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.6,
+    "ten_sell": 0.4,
+    "curr_buy": 0.6667,
+    "norm_disp": 0.257,
+    "chart_pattern": "Bearish(body:56% up:small-10% dn:med-33%)  Bullish(body:99% up:no-0% dn:no-0%)  Bullish(body:61% up:small-14% dn:med-24%)  Bullish(body:72% up:med-20% dn:small-7%)  Bullish(body:94% up:no-0% dn:small-5%)  Bearish(body:17% up:long-54% dn:med-27%)  Bearish(body:50% up:long-47% dn:no-1%)  Bearish(body:88% up:small-9% dn:no-2%)  Bullish(body:3% up:long-63% dn:med-33%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.57,
+        "upper": 0.1,
+        "lower": 0.33
+      },
+      {
+        "dir": 1,
+        "body": 0.994,
+        "upper": 0.0,
+        "lower": 0.006
+      },
+      {
+        "dir": 1,
+        "body": 0.614,
+        "upper": 0.146,
+        "lower": 0.24
+      },
+      {
+        "dir": 1,
+        "body": 0.728,
+        "upper": 0.202,
+        "lower": 0.07
+      },
+      {
+        "dir": 1,
+        "body": 0.942,
+        "upper": 0.0,
+        "lower": 0.058
+      },
+      {
+        "dir": -1,
+        "body": 0.174,
+        "upper": 0.547,
+        "lower": 0.279
+      },
+      {
+        "dir": -1,
+        "body": 0.506,
+        "upper": 0.475,
+        "lower": 0.019
+      },
+      {
+        "dir": -1,
+        "body": 0.88,
+        "upper": 0.094,
+        "lower": 0.027
+      },
+      {
+        "dir": 1,
+        "body": 0.032,
+        "upper": 0.636,
+        "lower": 0.332
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 310224.399369,
+      "ema_slow": 310142.887192,
+      "atr_val": 300.797621,
+      "htf_rsi": 64.87
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774599802
+  },
+  {
+    "timestamp": 1774599484,
+    "symbol": "1HZ50V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.6,
+    "ten_sell": 0.4,
+    "curr_buy": 0.8,
+    "norm_disp": 0.333,
+    "chart_pattern": "Bearish(body:56% up:small-10% dn:med-33%)  Bullish(body:99% up:no-0% dn:no-0%)  Bullish(body:61% up:small-14% dn:med-24%)  Bullish(body:72% up:med-20% dn:small-7%)  Bullish(body:94% up:no-0% dn:small-5%)  Bearish(body:17% up:long-54% dn:med-27%)  Bearish(body:50% up:long-47% dn:no-1%)  Bearish(body:88% up:small-9% dn:no-2%)  Bullish(body:3% up:long-63% dn:med-33%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.57,
+        "upper": 0.1,
+        "lower": 0.33
+      },
+      {
+        "dir": 1,
+        "body": 0.994,
+        "upper": 0.0,
+        "lower": 0.006
+      },
+      {
+        "dir": 1,
+        "body": 0.614,
+        "upper": 0.146,
+        "lower": 0.24
+      },
+      {
+        "dir": 1,
+        "body": 0.728,
+        "upper": 0.202,
+        "lower": 0.07
+      },
+      {
+        "dir": 1,
+        "body": 0.942,
+        "upper": 0.0,
+        "lower": 0.058
+      },
+      {
+        "dir": -1,
+        "body": 0.174,
+        "upper": 0.547,
+        "lower": 0.279
+      },
+      {
+        "dir": -1,
+        "body": 0.506,
+        "upper": 0.475,
+        "lower": 0.019
+      },
+      {
+        "dir": -1,
+        "body": 0.88,
+        "upper": 0.094,
+        "lower": 0.027
+      },
+      {
+        "dir": 1,
+        "body": 0.032,
+        "upper": 0.636,
+        "lower": 0.332
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 310224.399369,
+      "ema_slow": 310142.887192,
+      "atr_val": 300.797621,
+      "htf_rsi": 64.87
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774599830
+  },
+  {
+    "timestamp": 1774599489,
+    "symbol": "1HZ50V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.6,
+    "ten_sell": 0.4,
+    "curr_buy": 0.6,
+    "norm_disp": 0.269,
+    "chart_pattern": "Bearish(body:56% up:small-10% dn:med-33%)  Bullish(body:99% up:no-0% dn:no-0%)  Bullish(body:61% up:small-14% dn:med-24%)  Bullish(body:72% up:med-20% dn:small-7%)  Bullish(body:94% up:no-0% dn:small-5%)  Bearish(body:17% up:long-54% dn:med-27%)  Bearish(body:50% up:long-47% dn:no-1%)  Bearish(body:88% up:small-9% dn:no-2%)  Bullish(body:3% up:long-63% dn:med-33%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.57,
+        "upper": 0.1,
+        "lower": 0.33
+      },
+      {
+        "dir": 1,
+        "body": 0.994,
+        "upper": 0.0,
+        "lower": 0.006
+      },
+      {
+        "dir": 1,
+        "body": 0.614,
+        "upper": 0.146,
+        "lower": 0.24
+      },
+      {
+        "dir": 1,
+        "body": 0.728,
+        "upper": 0.202,
+        "lower": 0.07
+      },
+      {
+        "dir": 1,
+        "body": 0.942,
+        "upper": 0.0,
+        "lower": 0.058
+      },
+      {
+        "dir": -1,
+        "body": 0.174,
+        "upper": 0.547,
+        "lower": 0.279
+      },
+      {
+        "dir": -1,
+        "body": 0.506,
+        "upper": 0.475,
+        "lower": 0.019
+      },
+      {
+        "dir": -1,
+        "body": 0.88,
+        "upper": 0.094,
+        "lower": 0.027
+      },
+      {
+        "dir": 1,
+        "body": 0.032,
+        "upper": 0.636,
+        "lower": 0.332
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 310224.399369,
+      "ema_slow": 310142.887192,
+      "atr_val": 300.797621,
+      "htf_rsi": 64.87
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774599830
+  },
+  {
+    "timestamp": 1774599668,
+    "symbol": "R_10",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.2,
+    "norm_disp": -0.165,
+    "chart_pattern": "Bearish(body:16% up:long-59% dn:med-24%)  Bearish(body:68% up:med-32% dn:no-0%)  Bullish(body:12% up:long-60% dn:med-27%)  Bullish(body:79% up:med-20% dn:no-0%)  Bullish(body:29% up:med-25% dn:long-45%)  Bullish(body:56% up:med-39% dn:no-4%)  Bearish(body:84% up:small-15% dn:no-0%)  Bearish(body:76% up:med-23% dn:no-0%)  Bearish(body:80% up:no-0% dn:small-19%)  Bearish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.162,
+        "upper": 0.594,
+        "lower": 0.244
+      },
+      {
+        "dir": -1,
+        "body": 0.68,
+        "upper": 0.32,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.123,
+        "upper": 0.607,
+        "lower": 0.271
+      },
+      {
+        "dir": 1,
+        "body": 0.791,
+        "upper": 0.209,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.297,
+        "upper": 0.25,
+        "lower": 0.453
+      },
+      {
+        "dir": 1,
+        "body": 0.569,
+        "upper": 0.39,
+        "lower": 0.041
+      },
+      {
+        "dir": -1,
+        "body": 0.842,
+        "upper": 0.158,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.769,
+        "upper": 0.231,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.801,
+        "upper": 0.0,
+        "lower": 0.199
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 5143.077789,
+      "ema_slow": 5143.154132,
+      "atr_val": 0.963222,
+      "htf_rsi": 37.22
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774600002
+  },
+  {
+    "timestamp": 1774599672,
+    "symbol": "R_10",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.4286,
+    "norm_disp": 0.005,
+    "chart_pattern": "Bearish(body:16% up:long-59% dn:med-24%)  Bearish(body:68% up:med-32% dn:no-0%)  Bullish(body:12% up:long-60% dn:med-27%)  Bullish(body:79% up:med-20% dn:no-0%)  Bullish(body:29% up:med-25% dn:long-45%)  Bullish(body:56% up:med-39% dn:no-4%)  Bearish(body:84% up:small-15% dn:no-0%)  Bearish(body:76% up:med-23% dn:no-0%)  Bearish(body:80% up:no-0% dn:small-19%)  Bearish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.162,
+        "upper": 0.594,
+        "lower": 0.244
+      },
+      {
+        "dir": -1,
+        "body": 0.68,
+        "upper": 0.32,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.123,
+        "upper": 0.607,
+        "lower": 0.271
+      },
+      {
+        "dir": 1,
+        "body": 0.791,
+        "upper": 0.209,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.297,
+        "upper": 0.25,
+        "lower": 0.453
+      },
+      {
+        "dir": 1,
+        "body": 0.569,
+        "upper": 0.39,
+        "lower": 0.041
+      },
+      {
+        "dir": -1,
+        "body": 0.842,
+        "upper": 0.158,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.769,
+        "upper": 0.231,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.801,
+        "upper": 0.0,
+        "lower": 0.199
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 5143.077789,
+      "ema_slow": 5143.154132,
+      "atr_val": 0.963222,
+      "htf_rsi": 37.22
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774600002
+  },
+  {
+    "timestamp": 1774599670,
+    "symbol": "R_10",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.3333,
+    "norm_disp": -0.03,
+    "chart_pattern": "Bearish(body:16% up:long-59% dn:med-24%)  Bearish(body:68% up:med-32% dn:no-0%)  Bullish(body:12% up:long-60% dn:med-27%)  Bullish(body:79% up:med-20% dn:no-0%)  Bullish(body:29% up:med-25% dn:long-45%)  Bullish(body:56% up:med-39% dn:no-4%)  Bearish(body:84% up:small-15% dn:no-0%)  Bearish(body:76% up:med-23% dn:no-0%)  Bearish(body:80% up:no-0% dn:small-19%)  Bearish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.162,
+        "upper": 0.594,
+        "lower": 0.244
+      },
+      {
+        "dir": -1,
+        "body": 0.68,
+        "upper": 0.32,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.123,
+        "upper": 0.607,
+        "lower": 0.271
+      },
+      {
+        "dir": 1,
+        "body": 0.791,
+        "upper": 0.209,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.297,
+        "upper": 0.25,
+        "lower": 0.453
+      },
+      {
+        "dir": 1,
+        "body": 0.569,
+        "upper": 0.39,
+        "lower": 0.041
+      },
+      {
+        "dir": -1,
+        "body": 0.842,
+        "upper": 0.158,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.769,
+        "upper": 0.231,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.801,
+        "upper": 0.0,
+        "lower": 0.199
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 5143.077789,
+      "ema_slow": 5143.154132,
+      "atr_val": 0.963222,
+      "htf_rsi": 37.22
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774600072
+  },
+  {
+    "timestamp": 1774600692,
+    "symbol": "R_10",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.3,
+    "ten_sell": 0.7,
+    "curr_buy": 0.4286,
+    "norm_disp": -0.127,
+    "chart_pattern": "Bearish(body:89% up:no-1% dn:small-9%)  Bearish(body:21% up:long-44% dn:med-34%)  Bearish(body:21% up:long-43% dn:med-34%)  Bearish(body:9% up:long-61% dn:med-29%)  Bullish(body:27% up:long-53% dn:small-18%)  Bearish(body:47% up:long-45% dn:small-7%)  Bearish(body:100% up:no-0% dn:no-0%)  Bullish(body:65% up:small-15% dn:small-19%)  Bearish(body:85% up:no-2% dn:small-12%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.893,
+        "upper": 0.017,
+        "lower": 0.091
+      },
+      {
+        "dir": -1,
+        "body": 0.213,
+        "upper": 0.443,
+        "lower": 0.344
+      },
+      {
+        "dir": -1,
+        "body": 0.218,
+        "upper": 0.434,
+        "lower": 0.349
+      },
+      {
+        "dir": -1,
+        "body": 0.093,
+        "upper": 0.616,
+        "lower": 0.291
+      },
+      {
+        "dir": 1,
+        "body": 0.275,
+        "upper": 0.536,
+        "lower": 0.189
+      },
+      {
+        "dir": -1,
+        "body": 0.471,
+        "upper": 0.459,
+        "lower": 0.07
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.65,
+        "upper": 0.155,
+        "lower": 0.195
+      },
+      {
+        "dir": -1,
+        "body": 0.856,
+        "upper": 0.022,
+        "lower": 0.123
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 5140.736926,
+      "ema_slow": 5141.961127,
+      "atr_val": 0.946487,
+      "htf_rsi": 37.97
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774600996
+  },
+  {
+    "timestamp": 1774600744,
+    "symbol": "JD75",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.3,
+    "ten_sell": 0.7,
+    "curr_buy": 0.4,
+    "norm_disp": -0.01,
+    "chart_pattern": "Bearish(body:5% up:small-11% dn:long-82%)  Bearish(body:8% up:long-77% dn:small-14%)  Bearish(body:100% up:no-0% dn:no-0%)  Bullish(body:83% up:small-17% dn:no-0%)  Bearish(body:43% up:small-9% dn:long-46%)  Bearish(body:98% up:no-0% dn:no-2%)  Bullish(body:35% up:med-38% dn:med-25%)  Bullish(body:30% up:med-37% dn:med-31%)  Bearish(body:92% up:small-7% dn:no-0%)  Bearish(body:20% up:long-79% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.059,
+        "upper": 0.117,
+        "lower": 0.823
+      },
+      {
+        "dir": -1,
+        "body": 0.087,
+        "upper": 0.771,
+        "lower": 0.142
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.83,
+        "upper": 0.17,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.433,
+        "upper": 0.099,
+        "lower": 0.468
+      },
+      {
+        "dir": -1,
+        "body": 0.98,
+        "upper": 0.0,
+        "lower": 0.02
+      },
+      {
+        "dir": 1,
+        "body": 0.354,
+        "upper": 0.389,
+        "lower": 0.257
+      },
+      {
+        "dir": 1,
+        "body": 0.309,
+        "upper": 0.372,
+        "lower": 0.319
+      },
+      {
+        "dir": -1,
+        "body": 0.925,
+        "upper": 0.075,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.207,
+        "upper": 0.793,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 12528.24113,
+      "ema_slow": 12550.028626,
+      "atr_val": 19.2217,
+      "htf_rsi": 34.51
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774601046
+  },
+  {
+    "timestamp": 1774600751,
+    "symbol": "JD75",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.3,
+    "ten_sell": 0.7,
+    "curr_buy": 0.4167,
+    "norm_disp": 0.062,
+    "chart_pattern": "Bearish(body:5% up:small-11% dn:long-82%)  Bearish(body:8% up:long-77% dn:small-14%)  Bearish(body:100% up:no-0% dn:no-0%)  Bullish(body:83% up:small-17% dn:no-0%)  Bearish(body:43% up:small-9% dn:long-46%)  Bearish(body:98% up:no-0% dn:no-2%)  Bullish(body:35% up:med-38% dn:med-25%)  Bullish(body:30% up:med-37% dn:med-31%)  Bearish(body:92% up:small-7% dn:no-0%)  Bearish(body:20% up:long-79% dn:no-0%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.059,
+        "upper": 0.117,
+        "lower": 0.823
+      },
+      {
+        "dir": -1,
+        "body": 0.087,
+        "upper": 0.771,
+        "lower": 0.142
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.83,
+        "upper": 0.17,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.433,
+        "upper": 0.099,
+        "lower": 0.468
+      },
+      {
+        "dir": -1,
+        "body": 0.98,
+        "upper": 0.0,
+        "lower": 0.02
+      },
+      {
+        "dir": 1,
+        "body": 0.354,
+        "upper": 0.389,
+        "lower": 0.257
+      },
+      {
+        "dir": 1,
+        "body": 0.309,
+        "upper": 0.372,
+        "lower": 0.319
+      },
+      {
+        "dir": -1,
+        "body": 0.925,
+        "upper": 0.075,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.207,
+        "upper": 0.793,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 12528.24113,
+      "ema_slow": 12550.028626,
+      "atr_val": 19.2217,
+      "htf_rsi": 34.51
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774601053
+  },
+  {
+    "timestamp": 1774600864,
+    "symbol": "1HZ50V",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.4,
+    "norm_disp": -0.129,
+    "chart_pattern": "Bearish(body:54% up:long-45% dn:no-0%)  Bullish(body:75% up:med-24% dn:no-0%)  Bullish(body:1% up:long-68% dn:med-29%)  Bullish(body:98% up:no-0% dn:no-0%)  Bearish(body:90% up:no-0% dn:small-9%)  Bearish(body:72% up:small-9% dn:small-18%)  Bullish(body:93% up:no-0% dn:small-6%)  Bearish(body:41% up:med-23% dn:med-34%)  Bearish(body:100% up:no-0% dn:no-0%)  Bearish(body:81% up:no-0% dn:small-18%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.545,
+        "upper": 0.455,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.753,
+        "upper": 0.247,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.016,
+        "upper": 0.689,
+        "lower": 0.295
+      },
+      {
+        "dir": 1,
+        "body": 0.985,
+        "upper": 0.009,
+        "lower": 0.005
+      },
+      {
+        "dir": -1,
+        "body": 0.908,
+        "upper": 0.0,
+        "lower": 0.092
+      },
+      {
+        "dir": -1,
+        "body": 0.727,
+        "upper": 0.091,
+        "lower": 0.182
+      },
+      {
+        "dir": 1,
+        "body": 0.936,
+        "upper": 0.0,
+        "lower": 0.064
+      },
+      {
+        "dir": -1,
+        "body": 0.419,
+        "upper": 0.239,
+        "lower": 0.342
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.816,
+        "upper": 0.0,
+        "lower": 0.184
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 309700.793211,
+      "ema_slow": 309811.880916,
+      "atr_val": 299.576818,
+      "htf_rsi": 51.66
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774601167
+  },
+  {
+    "timestamp": 1774600888,
+    "symbol": "1HZ50V",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.4483,
+    "norm_disp": -0.376,
+    "chart_pattern": "Bearish(body:54% up:long-45% dn:no-0%)  Bullish(body:75% up:med-24% dn:no-0%)  Bullish(body:1% up:long-68% dn:med-29%)  Bullish(body:98% up:no-0% dn:no-0%)  Bearish(body:90% up:no-0% dn:small-9%)  Bearish(body:72% up:small-9% dn:small-18%)  Bullish(body:93% up:no-0% dn:small-6%)  Bearish(body:41% up:med-23% dn:med-34%)  Bearish(body:100% up:no-0% dn:no-0%)  Bearish(body:81% up:no-0% dn:small-18%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.545,
+        "upper": 0.455,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.753,
+        "upper": 0.247,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.016,
+        "upper": 0.689,
+        "lower": 0.295
+      },
+      {
+        "dir": 1,
+        "body": 0.985,
+        "upper": 0.009,
+        "lower": 0.005
+      },
+      {
+        "dir": -1,
+        "body": 0.908,
+        "upper": 0.0,
+        "lower": 0.092
+      },
+      {
+        "dir": -1,
+        "body": 0.727,
+        "upper": 0.091,
+        "lower": 0.182
+      },
+      {
+        "dir": 1,
+        "body": 0.936,
+        "upper": 0.0,
+        "lower": 0.064
+      },
+      {
+        "dir": -1,
+        "body": 0.419,
+        "upper": 0.239,
+        "lower": 0.342
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.816,
+        "upper": 0.0,
+        "lower": 0.184
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 309700.793211,
+      "ema_slow": 309811.880916,
+      "atr_val": 299.576818,
+      "htf_rsi": 51.66
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774601196
+  },
+  {
+    "timestamp": 1774600893,
+    "symbol": "1HZ50V",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.4412,
+    "norm_disp": -0.522,
+    "chart_pattern": "Bearish(body:54% up:long-45% dn:no-0%)  Bullish(body:75% up:med-24% dn:no-0%)  Bullish(body:1% up:long-68% dn:med-29%)  Bullish(body:98% up:no-0% dn:no-0%)  Bearish(body:90% up:no-0% dn:small-9%)  Bearish(body:72% up:small-9% dn:small-18%)  Bullish(body:93% up:no-0% dn:small-6%)  Bearish(body:41% up:med-23% dn:med-34%)  Bearish(body:100% up:no-0% dn:no-0%)  Bearish(body:81% up:no-0% dn:small-18%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.545,
+        "upper": 0.455,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.753,
+        "upper": 0.247,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.016,
+        "upper": 0.689,
+        "lower": 0.295
+      },
+      {
+        "dir": 1,
+        "body": 0.985,
+        "upper": 0.009,
+        "lower": 0.005
+      },
+      {
+        "dir": -1,
+        "body": 0.908,
+        "upper": 0.0,
+        "lower": 0.092
+      },
+      {
+        "dir": -1,
+        "body": 0.727,
+        "upper": 0.091,
+        "lower": 0.182
+      },
+      {
+        "dir": 1,
+        "body": 0.936,
+        "upper": 0.0,
+        "lower": 0.064
+      },
+      {
+        "dir": -1,
+        "body": 0.419,
+        "upper": 0.239,
+        "lower": 0.342
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.816,
+        "upper": 0.0,
+        "lower": 0.184
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 309700.793211,
+      "ema_slow": 309811.880916,
+      "atr_val": 299.576818,
+      "htf_rsi": 51.66
+    },
+    "pnl": -89.69,
+    "won": false,
+    "closed_at": 1774601229
+  },
+  {
+    "timestamp": 1774636144,
+    "symbol": "1HZ90V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.7,
+    "ten_sell": 0.3,
+    "curr_buy": 0.8,
+    "norm_disp": 0.325,
+    "chart_pattern": "Bullish(body:71% up:med-24% dn:no-4%)  Bullish(body:32% up:long-56% dn:small-11%)  Bullish(body:39% up:small-16% dn:long-43%)  Bearish(body:93% up:no-0% dn:small-6%)  Bullish(body:77% up:med-22% dn:no-0%)  Bearish(body:77% up:no-0% dn:med-22%)  Bullish(body:56% up:med-29% dn:small-14%)  Bearish(body:65% up:no-0% dn:med-34%)  Bullish(body:12% up:long-87% dn:no-0%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.716,
+        "upper": 0.243,
+        "lower": 0.04
+      },
+      {
+        "dir": 1,
+        "body": 0.32,
+        "upper": 0.561,
+        "lower": 0.119
+      },
+      {
+        "dir": 1,
+        "body": 0.399,
+        "upper": 0.162,
+        "lower": 0.439
+      },
+      {
+        "dir": -1,
+        "body": 0.938,
+        "upper": 0.0,
+        "lower": 0.062
+      },
+      {
+        "dir": 1,
+        "body": 0.776,
+        "upper": 0.224,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.771,
+        "upper": 0.005,
+        "lower": 0.224
+      },
+      {
+        "dir": 1,
+        "body": 0.566,
+        "upper": 0.292,
+        "lower": 0.143
+      },
+      {
+        "dir": -1,
+        "body": 0.657,
+        "upper": 0.0,
+        "lower": 0.343
+      },
+      {
+        "dir": 1,
+        "body": 0.123,
+        "upper": 0.873,
+        "lower": 0.004
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 10500.968627,
+      "ema_slow": 10484.894795,
+      "atr_val": 17.503745,
+      "htf_rsi": 58.11
+    },
+    "pnl": -91.97,
+    "won": false,
+    "closed_at": 1774636449
+  },
+  {
+    "timestamp": 1774636145,
+    "symbol": "1HZ90V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.7,
+    "ten_sell": 0.3,
+    "curr_buy": 0.8333,
+    "norm_disp": 0.329,
+    "chart_pattern": "Bullish(body:71% up:med-24% dn:no-4%)  Bullish(body:32% up:long-56% dn:small-11%)  Bullish(body:39% up:small-16% dn:long-43%)  Bearish(body:93% up:no-0% dn:small-6%)  Bullish(body:77% up:med-22% dn:no-0%)  Bearish(body:77% up:no-0% dn:med-22%)  Bullish(body:56% up:med-29% dn:small-14%)  Bearish(body:65% up:no-0% dn:med-34%)  Bullish(body:12% up:long-87% dn:no-0%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.716,
+        "upper": 0.243,
+        "lower": 0.04
+      },
+      {
+        "dir": 1,
+        "body": 0.32,
+        "upper": 0.561,
+        "lower": 0.119
+      },
+      {
+        "dir": 1,
+        "body": 0.399,
+        "upper": 0.162,
+        "lower": 0.439
+      },
+      {
+        "dir": -1,
+        "body": 0.938,
+        "upper": 0.0,
+        "lower": 0.062
+      },
+      {
+        "dir": 1,
+        "body": 0.776,
+        "upper": 0.224,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.771,
+        "upper": 0.005,
+        "lower": 0.224
+      },
+      {
+        "dir": 1,
+        "body": 0.566,
+        "upper": 0.292,
+        "lower": 0.143
+      },
+      {
+        "dir": -1,
+        "body": 0.657,
+        "upper": 0.0,
+        "lower": 0.343
+      },
+      {
+        "dir": 1,
+        "body": 0.123,
+        "upper": 0.873,
+        "lower": 0.004
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 10500.968627,
+      "ema_slow": 10484.894795,
+      "atr_val": 17.503745,
+      "htf_rsi": 58.11
+    },
+    "pnl": -91.97,
+    "won": false,
+    "closed_at": 1774636451
+  },
+  {
+    "timestamp": 1774636146,
+    "symbol": "1HZ90V",
+    "direction": "CALL",
+    "market_condition": {
+      "trend": "up",
+      "htf_trend": "up",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "MID",
+      "ema_fast_gt_slow": true
+    },
+    "ten_buy": 0.7,
+    "ten_sell": 0.3,
+    "curr_buy": 0.8571,
+    "norm_disp": 0.41,
+    "chart_pattern": "Bullish(body:71% up:med-24% dn:no-4%)  Bullish(body:32% up:long-56% dn:small-11%)  Bullish(body:39% up:small-16% dn:long-43%)  Bearish(body:93% up:no-0% dn:small-6%)  Bullish(body:77% up:med-22% dn:no-0%)  Bearish(body:77% up:no-0% dn:med-22%)  Bullish(body:56% up:med-29% dn:small-14%)  Bearish(body:65% up:no-0% dn:med-34%)  Bullish(body:12% up:long-87% dn:no-0%)  Bullish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.716,
+        "upper": 0.243,
+        "lower": 0.04
+      },
+      {
+        "dir": 1,
+        "body": 0.32,
+        "upper": 0.561,
+        "lower": 0.119
+      },
+      {
+        "dir": 1,
+        "body": 0.399,
+        "upper": 0.162,
+        "lower": 0.439
+      },
+      {
+        "dir": -1,
+        "body": 0.938,
+        "upper": 0.0,
+        "lower": 0.062
+      },
+      {
+        "dir": 1,
+        "body": 0.776,
+        "upper": 0.224,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.771,
+        "upper": 0.005,
+        "lower": 0.224
+      },
+      {
+        "dir": 1,
+        "body": 0.566,
+        "upper": 0.292,
+        "lower": 0.143
+      },
+      {
+        "dir": -1,
+        "body": 0.657,
+        "upper": 0.0,
+        "lower": 0.343
+      },
+      {
+        "dir": 1,
+        "body": 0.123,
+        "upper": 0.873,
+        "lower": 0.004
+      },
+      {
+        "dir": 1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 10500.968627,
+      "ema_slow": 10484.894795,
+      "atr_val": 17.503745,
+      "htf_rsi": 58.11
+    },
+    "pnl": -91.97,
+    "won": false,
+    "closed_at": 1774636452
+  },
+  {
+    "timestamp": 1774636414,
+    "symbol": "1HZ50V",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.3,
+    "ten_sell": 0.7,
+    "curr_buy": 0.4,
+    "norm_disp": -0.273,
+    "chart_pattern": "Bullish(body:97% up:no-0% dn:no-2%)  Bearish(body:54% up:med-28% dn:small-16%)  Bearish(body:24% up:long-62% dn:small-12%)  Bearish(body:19% up:long-40% dn:med-39%)  Bullish(body:52% up:med-33% dn:small-13%)  Bullish(body:33% up:med-22% dn:long-44%)  Bearish(body:39% up:no-0% dn:long-59%)  Bearish(body:86% up:small-14% dn:no-0%)  Bearish(body:20% up:long-69% dn:small-10%)  Bearish(body:100% up:no-0% dn:no-0%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.979,
+        "upper": 0.0,
+        "lower": 0.021
+      },
+      {
+        "dir": -1,
+        "body": 0.549,
+        "upper": 0.289,
+        "lower": 0.162
+      },
+      {
+        "dir": -1,
+        "body": 0.249,
+        "upper": 0.629,
+        "lower": 0.121
+      },
+      {
+        "dir": -1,
+        "body": 0.197,
+        "upper": 0.407,
+        "lower": 0.396
+      },
+      {
+        "dir": 1,
+        "body": 0.527,
+        "upper": 0.339,
+        "lower": 0.134
+      },
+      {
+        "dir": 1,
+        "body": 0.333,
+        "upper": 0.223,
+        "lower": 0.444
+      },
+      {
+        "dir": -1,
+        "body": 0.397,
+        "upper": 0.004,
+        "lower": 0.599
+      },
+      {
+        "dir": -1,
+        "body": 0.86,
+        "upper": 0.14,
+        "lower": 0.0
+      },
+      {
+        "dir": -1,
+        "body": 0.2,
+        "upper": 0.69,
+        "lower": 0.109
+      },
+      {
+        "dir": -1,
+        "body": 1.0,
+        "upper": 0.0,
+        "lower": 0.0
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 300732.160476,
+      "ema_slow": 301099.920392,
+      "atr_val": 289.832795,
+      "htf_rsi": 40.11
+    },
+    "pnl": -91.97,
+    "won": false,
+    "closed_at": 1774636756
+  },
+  {
+    "timestamp": 1774637287,
+    "symbol": "1HZ50V",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.4286,
+    "norm_disp": 0.053,
+    "chart_pattern": "Bearish(body:16% up:med-28% dn:long-55%)  Bullish(body:40% up:small-5% dn:long-54%)  Bullish(body:25% up:long-68% dn:small-5%)  Bearish(body:13% up:no-1% dn:long-85%)  Bearish(body:31% up:long-52% dn:small-16%)  Bearish(body:68% up:small-12% dn:small-18%)  Bearish(body:55% up:long-44% dn:no-0%)  Bearish(body:23% up:med-24% dn:long-52%)  Bullish(body:45% up:med-35% dn:small-18%)  Bullish(body:34% up:no-0% dn:long-65%)",
+    "candles": [
+      {
+        "dir": -1,
+        "body": 0.162,
+        "upper": 0.281,
+        "lower": 0.557
+      },
+      {
+        "dir": 1,
+        "body": 0.404,
+        "upper": 0.052,
+        "lower": 0.544
+      },
+      {
+        "dir": 1,
+        "body": 0.258,
+        "upper": 0.683,
+        "lower": 0.059
+      },
+      {
+        "dir": -1,
+        "body": 0.132,
+        "upper": 0.01,
+        "lower": 0.858
+      },
+      {
+        "dir": -1,
+        "body": 0.312,
+        "upper": 0.521,
+        "lower": 0.167
+      },
+      {
+        "dir": -1,
+        "body": 0.686,
+        "upper": 0.128,
+        "lower": 0.186
+      },
+      {
+        "dir": -1,
+        "body": 0.553,
+        "upper": 0.446,
+        "lower": 0.002
+      },
+      {
+        "dir": -1,
+        "body": 0.236,
+        "upper": 0.242,
+        "lower": 0.522
+      },
+      {
+        "dir": 1,
+        "body": 0.458,
+        "upper": 0.354,
+        "lower": 0.188
+      },
+      {
+        "dir": 1,
+        "body": 0.347,
+        "upper": 0.0,
+        "lower": 0.653
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 300206.244253,
+      "ema_slow": 300649.848194,
+      "atr_val": 279.35154,
+      "htf_rsi": 31.78
+    },
+    "pnl": -93.92,
+    "won": false,
+    "closed_at": 1774637307
+  },
+  {
+    "timestamp": 1774639984,
+    "symbol": "1HZ25V",
+    "direction": "PUT",
+    "market_condition": {
+      "trend": "down",
+      "htf_trend": "down",
+      "exhausted": false,
+      "htf_exhausted": false,
+      "rsi_bucket": "LOW",
+      "ema_fast_gt_slow": false
+    },
+    "ten_buy": 0.4,
+    "ten_sell": 0.6,
+    "curr_buy": 0.4,
+    "norm_disp": 0.13,
+    "chart_pattern": "Bullish(body:46% up:small-5% dn:long-47%)  Bearish(body:63% up:med-36% dn:no-0%)  Bullish(body:31% up:long-61% dn:small-6%)  Bullish(body:0% up:long-82% dn:small-16%)  Bullish(body:18% up:small-15% dn:long-66%)  Bearish(body:73% up:no-0% dn:med-26%)  Bearish(body:52% up:no-0% dn:long-47%)  Bearish(body:80% up:no-0% dn:small-19%)  Bearish(body:53% up:long-45% dn:no-0%)  Bearish(body:25% up:no-0% dn:long-74%)",
+    "candles": [
+      {
+        "dir": 1,
+        "body": 0.465,
+        "upper": 0.058,
+        "lower": 0.477
+      },
+      {
+        "dir": -1,
+        "body": 0.631,
+        "upper": 0.369,
+        "lower": 0.0
+      },
+      {
+        "dir": 1,
+        "body": 0.316,
+        "upper": 0.619,
+        "lower": 0.066
+      },
+      {
+        "dir": 1,
+        "body": 0.005,
+        "upper": 0.829,
+        "lower": 0.166
+      },
+      {
+        "dir": 1,
+        "body": 0.18,
+        "upper": 0.154,
+        "lower": 0.667
+      },
+      {
+        "dir": -1,
+        "body": 0.731,
+        "upper": 0.0,
+        "lower": 0.269
+      },
+      {
+        "dir": -1,
+        "body": 0.523,
+        "upper": 0.0,
+        "lower": 0.477
+      },
+      {
+        "dir": -1,
+        "body": 0.807,
+        "upper": 0.0,
+        "lower": 0.193
+      },
+      {
+        "dir": -1,
+        "body": 0.536,
+        "upper": 0.456,
+        "lower": 0.009
+      },
+      {
+        "dir": -1,
+        "body": 0.253,
+        "upper": 0.0,
+        "lower": 0.747
+      }
+    ],
+    "ind_snapshot": {
+      "ema_fast": 828003.851861,
+      "ema_slow": 828335.354332,
+      "atr_val": 431.616662,
+      "htf_rsi": 34.96
+    },
+    "pnl": -93.92,
+    "won": false,
+    "closed_at": 1774640005
+  }
+]
