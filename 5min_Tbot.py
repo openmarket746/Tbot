@@ -115,7 +115,7 @@ DEFAULT_CONFIG = {
 # ============================================================
 #  TRADING CONSTANTS
 # ============================================================
-DURATION        = 4
+DURATION        = 2
 CURRENCY        = "USD"
 MAX_OPEN_TRADES = 2
 TOP_N           = 5
