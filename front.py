@@ -811,7 +811,7 @@ def start_session(data):
     with open(ucp,"w") as f:
         json.dump(configs.get(sid, dict(DEFAULT_CONFIG)), f, indent=4)
 
-    script = os.path.join(BASE_DIR,"Tbot_trend.py")
+    script = os.path.join(BASE_DIR,"5min_Tbot.py")
     python = sys.executable or "python3"
 
     env = os.environ.copy()
