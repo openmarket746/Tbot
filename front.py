@@ -639,6 +639,31 @@ def verify_and_save():
         account=auth.get("fullname") or auth.get("email") or auth.get("loginid") or ""
         if sid:
             cfg=dict(DEFAULT_CONFIG); cfg["app_id"]=app_id; cfg["api_token"]=api_token; configs[sid]=cfg
+
+            # If a bot is already running for this user, update its config file
+            # and signal it to reload the token via the command file
+            name = names.get(sid)
+            if name:
+                safe    = _safe_name(name)
+                ucp     = os.path.join(BASE_DIR, f"config_{safe}.json")
+                cmd_f   = os.path.join(BASE_DIR, f"cmd_{safe}.json")
+                # Overwrite the config file with the new credentials
+                try:
+                    tmp = ucp + ".tmp"
+                    with open(tmp, "w") as fh:
+                        json.dump(cfg, fh, indent=4)
+                    os.replace(tmp, ucp)
+                    log.info(f"[verify] config_{safe}.json updated with new token")
+                except Exception as e:
+                    log.error(f"[verify] Failed to update config file: {e}")
+                # Signal running bot to reload token from config file
+                try:
+                    with open(cmd_f, "w") as fh:
+                        json.dump({"action": "update_token"}, fh)
+                    log.info(f"[verify] update_token command sent to {safe}")
+                except Exception as e:
+                    log.error(f"[verify] Failed to write cmd file: {e}")
+
         return jsonify({"ok":True,"account":account})
     except Exception as e:
         return jsonify({"ok":False,"error":str(e)}),500
@@ -771,16 +796,13 @@ def check_license(data):
 def start_session(data):
     sid=request.sid; name=data["name"]; token=data["token"]
     v,m=validate_license(name,token)
-    if not v: emit("terminal_output",f"\r\n{m}\r\n"); return
+    if not v: emit("session_error", {"msg": m}); return
 
     # ── One session per license name ──────────────────────────────────────
     # If this user is already connected on another browser/tab, block them
     existing_sid = active_users.get(name)
     if existing_sid and existing_sid != sid and existing_sid in sessions:
-        emit("terminal_output",
-             "\r\n[ERROR] This license is already active in another session.\r\n"
-             "[ERROR] Only one connection per license is allowed.\r\n"
-             "[ERROR] Disconnect the other session first.\r\n")
+        emit("session_error", {"msg": "License already active in another session. Disconnect first."})
         return
 
     if sid in sessions: _detach_socket(sid)
@@ -798,9 +820,7 @@ def start_session(data):
         # Replay last buffer so user sees what happened while away
         prior = existing.get("buffer","")
         if prior:
-            emit("terminal_output", f"\r\n[Reconnected — replaying last output]\r\n{prior}")
-        else:
-            emit("terminal_output", f"\r\n[Reconnected to running bot]\r\n")
+            emit("terminal_output", prior)   # replay output only, no banner
         existing["sid"] = sid  # update which socket is watching
         socketio.start_background_task(read_terminal, sid)
         log.info(f"[session] {name} reconnected to existing bot")
@@ -811,7 +831,7 @@ def start_session(data):
     with open(ucp,"w") as f:
         json.dump(configs.get(sid, dict(DEFAULT_CONFIG)), f, indent=4)
 
-    script = os.path.join(BASE_DIR,"5min_Tbot.py")
+    script = os.path.join(BASE_DIR,"an.py")
     python = sys.executable or "python3"
 
     env = os.environ.copy()
@@ -866,7 +886,7 @@ def start_session(data):
         # Store in bot_sessions keyed by name so reconnects can find it
         bot_sessions[name] = {
             "proc":       proc,
-            "pipe":       proc.stdout,
+            "pipe":       pipe,   # PTY master fd (or stdout fallback)
             "buffer":     "",
             "sid":        sid,
             "safe_name":  safe,
@@ -875,10 +895,10 @@ def start_session(data):
         }
         socketio.start_background_task(read_terminal, sid)
         socketio.start_background_task(_idle_watchdog, name)
-        emit("terminal_output", f"\r\n[Bot session started]\r\n")
+        emit("session_info", {"msg": "started"})
         log.info(f"[session] {name} started new bot")
     except Exception as e:
-        emit("terminal_output", f"\r\n[LAUNCH ERROR] {e}\r\n")
+        emit("session_error", {"msg": f"Launch failed: {e}"})
 
 def read_terminal(sid):
     while True:
@@ -895,7 +915,7 @@ def read_terminal(sid):
             break
         if not chunk:
             # EOF — process has exited
-            socketio.emit("terminal_output", "\r\n[process exited]\r\n", to=sid)
+            socketio.emit("session_info", {"msg": "stopped"}, to=sid)
             _cleanup_session(sid)
             break
         text = chunk.decode(errors="ignore")
@@ -1032,7 +1052,7 @@ def send_command(data):
 
 @socketio.on("stop_session")
 def stop_session(data):
-    _cleanup_session(request.sid); emit("terminal_output","\r\nSESSION STOPPED\r\n")
+    _cleanup_session(request.sid); emit("session_info", {"msg": "stopped"})
 
 @socketio.on("disconnect")
 def on_disconnect():
@@ -1054,7 +1074,12 @@ def admin_memory():
 
     def _count(path):
         try:
-            with open(path) as f: return len(json.load(f))
+            with open(path) as f:
+                d = json.load(f)
+            # Dict format: {setup_key: [records]} — count total records across all keys
+            if isinstance(d, dict):
+                return sum(len(v) for v in d.values() if isinstance(v, list))
+            return len(d)  # list fallback
         except: return 0
 
     def _size(path):
@@ -1131,8 +1156,9 @@ def admin_memory_upload():
     try:
         content = f.read()
         data    = json.loads(content)
-        if not isinstance(data, list):
-            flask_session["mem_error"] = "Invalid format — file must be a JSON array."
+        # Bot stores memory as {setup_key: [records]} dict — accept both dict and list
+        if not isinstance(data, (dict, list)):
+            flask_session["mem_error"] = "Invalid format — expected a JSON object or array."
             return redirect("/x7k2" + "/memory")
     except Exception as e:
         flask_session["mem_error"] = f"Invalid JSON: {e}"
@@ -1144,8 +1170,9 @@ def admin_memory_upload():
         out.write(content)
     os.replace(tmp, fpath)
 
-    log.info(f"[memory] {fname} uploaded via admin — {len(data)} entries")
-    flask_session["mem_flash"] = f"✓ {fname} uploaded successfully — {len(data)} setups loaded."
+    entry_count = len(data) if isinstance(data, dict) else len(data)
+    log.info(f"[memory] {fname} uploaded via admin — {entry_count} setup keys")
+    flask_session["mem_flash"] = f"✓ {fname} uploaded — {entry_count} setup keys loaded."
     return redirect("/x7k2" + "/memory")
 
 
