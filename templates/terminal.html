@@ -221,11 +221,6 @@
     box-shadow: 0 0 0 3px rgba(0,229,160,0.08);
   }
 
-  input.error-field {
-    border-color: var(--warn);
-    box-shadow: 0 0 0 3px rgba(255,77,109,0.08);
-  }
-
   input.success-field {
     border-color: rgba(0,229,160,0.4);
   }
@@ -273,34 +268,9 @@
     border-color: var(--accent); color: var(--accent);
   }
 
-  /* ── ALERT BOXES ── */
-  .alert {
-    border-radius: 8px; padding: 14px 16px;
-    font-size: 12px; line-height: 1.6;
-    display: none; margin-top: 16px;
-    animation: fadeUp 0.25s ease;
-  }
-  .alert.show { display: block; }
-
   @keyframes fadeUp {
     from { opacity:0; transform:translateY(4px); }
     to   { opacity:1; transform:translateY(0); }
-  }
-
-  .alert-success {
-    background: rgba(0,229,160,0.06);
-    border: 1px solid rgba(0,229,160,0.25);
-    color: var(--accent);
-  }
-  .alert-error {
-    background: rgba(255,77,109,0.06);
-    border: 1px solid rgba(255,77,109,0.25);
-    color: var(--warn);
-  }
-  .alert-info {
-    background: rgba(0,168,255,0.06);
-    border: 1px solid rgba(0,168,255,0.2);
-    color: var(--accent2);
   }
 
   /* ── CONFIG PREVIEW ── */
@@ -871,8 +841,7 @@
         ⌁ Verify &amp; Connect
       </button>
 
-      <div class="alert alert-error" id="lic-error"></div>
-      <div class="alert alert-success" id="lic-success"></div>
+
     </div>
   </div>
 
@@ -913,12 +882,7 @@
         Skip — use existing config
       </button>
 
-      <!-- Deriv verify result -->
-      <div class="alert alert-info"    id="deriv-verifying" style="display:none;">
-        <span id="deriv-verifying-text">⟳  Connecting to Deriv…</span>
-      </div>
-      <div class="alert alert-success" id="deriv-ok"  style="display:none;"></div>
-      <div class="alert alert-error"   id="deriv-err" style="display:none;"></div>
+
 
       <div class="remember-row" style="margin-top:14px;">
         <label class="checkbox-label">
@@ -931,8 +895,7 @@
         </button>
       </div>
 
-      <div class="alert alert-error"   id="cfg-error"></div>
-      <div class="alert alert-success" id="cfg-success"></div>
+
 
     </div>
   </div>
@@ -1003,8 +966,6 @@
         </div>
       </div>
 
-      <div class="alert alert-error" id="bot-settings-error"></div>
-
       <button class="btn btn-primary" id="btn-start-bot" onclick="startBot()">
         ⌁ Start Bot
       </button>
@@ -1057,6 +1018,76 @@
 
     <!-- RIGHT: TRADING CONTROLS -->
     <div class="controls-panel" id="controls-panel">
+
+      <!-- LIVE STAKE CONTROL -->
+      <div class="ctrl-card">
+        <div class="ctrl-card-header">
+          <div class="ctrl-dot" style="background:var(--accent);"></div>
+          <span>Stake per Trade</span>
+        </div>
+        <div class="ctrl-body">
+          <div class="ctrl-field">
+            <div class="ctrl-label">Amount <span class="unit">USD</span></div>
+            <div class="ctrl-input-row">
+              <input type="number" class="ctrl-input" id="ctrl-stake"
+                     placeholder="e.g. 1.00" min="0.35" step="0.01">
+              <div class="ctrl-stepper">
+                <button class="ctrl-step-btn" onclick="step('ctrl-stake', 1)">▲</button>
+                <button class="ctrl-step-btn" onclick="step('ctrl-stake',-1)">▼</button>
+              </div>
+            </div>
+          </div>
+          <button class="ctrl-send-btn green" onclick="sendCmd('stake')">Set Stake</button>
+          <div class="ctrl-flash" id="flash-stake"></div>
+        </div>
+      </div>
+
+      <!-- LIVE TP CONTROL -->
+      <div class="ctrl-card">
+        <div class="ctrl-card-header">
+          <div class="ctrl-dot" style="background:#00a8ff;"></div>
+          <span>Take Profit</span>
+        </div>
+        <div class="ctrl-body">
+          <div class="ctrl-field">
+            <div class="ctrl-label">Session TP <span class="unit">USD (0 = off)</span></div>
+            <div class="ctrl-input-row">
+              <input type="number" class="ctrl-input" id="ctrl-tp"
+                     placeholder="e.g. 10.00" min="0" step="0.50">
+              <div class="ctrl-stepper">
+                <button class="ctrl-step-btn" onclick="step('ctrl-tp', 1)">▲</button>
+                <button class="ctrl-step-btn" onclick="step('ctrl-tp',-1)">▼</button>
+              </div>
+            </div>
+          </div>
+          <button class="ctrl-send-btn" onclick="sendCmd('tp')"
+                  style="background:var(--accent2);color:#000;">Set TP</button>
+          <div class="ctrl-flash" id="flash-tp"></div>
+        </div>
+      </div>
+
+      <!-- LIVE SL CONTROL -->
+      <div class="ctrl-card">
+        <div class="ctrl-card-header">
+          <div class="ctrl-dot" style="background:var(--warn);"></div>
+          <span>Stop Loss</span>
+        </div>
+        <div class="ctrl-body">
+          <div class="ctrl-field">
+            <div class="ctrl-label">Session SL <span class="unit">USD (0 = off)</span></div>
+            <div class="ctrl-input-row">
+              <input type="number" class="ctrl-input" id="ctrl-sl"
+                     placeholder="e.g. 5.00" min="0" step="0.50">
+              <div class="ctrl-stepper">
+                <button class="ctrl-step-btn" onclick="step('ctrl-sl', 1)">▲</button>
+                <button class="ctrl-step-btn" onclick="step('ctrl-sl',-1)">▼</button>
+              </div>
+            </div>
+          </div>
+          <button class="ctrl-send-btn orange" onclick="sendCmd('sl')">Set SL</button>
+          <div class="ctrl-flash" id="flash-sl"></div>
+        </div>
+      </div>
 
       <!-- COMMAND HISTORY -->
       <div class="ctrl-card">
@@ -1256,12 +1287,29 @@ function initSocket() {
   });
 
   socket.on("terminal_output", (data) => {
+    // Pure bot output — render directly, no error detection needed
     appendTerminal(data);
+  });
 
-    // Detect license rejection messages from server
-    if (data.includes("INVALID LICENSE") || data.includes("LICENSE EXPIRED")) {
-      showAlert("lic-error", data.trim());
+  socket.on("session_error", (data) => {
+    // Silently handle — re-enable connect button if credentials failed
+    const msg = (data && data.msg) ? data.msg : "";
+    if (msg.includes("LICENSE") || msg.includes("license") ||
+        msg.includes("INVALID") || msg.includes("EXPIRED") ||
+        msg.includes("already active")) {
+      const btn = document.getElementById("btn-connect");
+      if (btn) { btn.disabled = false; btn.textContent = "⌁ Verify & Connect"; }
       unlockStep(1);
+    }
+  });
+
+  socket.on("session_info", (data) => {
+    const msg = (data && data.msg) ? data.msg : "";
+    if (msg === "stopped") {
+      sessionActive = false;
+      setSessionStatus("STOPPED");
+    } else if (msg === "started") {
+      setSessionStatus("ACTIVE");
     }
   });
 }
@@ -1297,37 +1345,14 @@ function unlockStep(n) {
   setStep(n);
 }
 
-// ── ALERTS ───────────────────────────────────────────────────────────────────
-function showAlert(id, msg) {
-  const el = document.getElementById(id);
-  el.textContent = msg;
-  el.classList.add("show");
-}
-
-function hideAlert(id) {
-  document.getElementById(id).classList.remove("show");
-}
-
-function clearAlerts(...ids) {
-  ids.forEach(hideAlert);
-}
-
-function shakeInput(id) {
-  const el = document.getElementById(id);
-  el.classList.add("error-field");
-  setTimeout(() => el.classList.remove("error-field"), 1500);
-}
-
 // ── STEP 1: LICENSE ───────────────────────────────────────────────────────────
 function connectSession() {
   const name  = document.getElementById("lic-name").value.trim();
   const token = document.getElementById("lic-token").value.trim().toUpperCase();
   const remember = document.getElementById("lic-remember").checked;
 
-  clearAlerts("lic-error", "lic-success");
-
-  if (!name)  { shakeInput("lic-name");  showAlert("lic-error", "Username is required."); return; }
-  if (!token) { shakeInput("lic-token"); showAlert("lic-error", "License token is required."); return; }
+  if (!name)  { document.getElementById("lic-name").focus();  return; }
+  if (!token) { document.getElementById("lic-token").focus(); return; }
 
   if (!socket) initSocket();
 
@@ -1341,7 +1366,6 @@ function connectSession() {
 
     socket.once("license_result", (data) => {
       if (!data.valid) {
-        showAlert("lic-error", "✗  " + (data.msg || "Invalid license"));
         btn.disabled = false;
         btn.textContent = "⌁ Verify & Connect";
         currentUser = null;
@@ -1369,8 +1393,6 @@ function onLicenseVerified(name) {
 
   document.getElementById("lic-name").classList.add("success-field");
   document.getElementById("lic-token").classList.add("success-field");
-  showAlert("lic-success", `✓  License valid — welcome, ${name}`);
-
   document.getElementById("btn-connect").textContent = "✓ Verified";
   document.getElementById("btn-connect").disabled = true;
 
@@ -1385,36 +1407,18 @@ function onLicenseVerified(name) {
   setBadge(true);
 }
 
-// ── STEP 2: DERIV VERIFICATION ────────────────────────────────────────────────
-function showDerivAlert(id, msg) {
-  ["deriv-verifying","deriv-ok","deriv-err"].forEach(x => {
-    document.getElementById(x).style.display = "none";
-  });
-  const el = document.getElementById(id);
-  if (msg) el.textContent = msg;
-  el.style.display = "block";
-}
-
 // ── STEP 2: VERIFY DERIV + SAVE CONFIG (ONE BUTTON) ──────────────────────────
 function verifyAndSave() {
   const appId    = document.getElementById("cfg-app-id").value.trim();
   const apiToken = document.getElementById("cfg-api-token").value.trim();
   const remember = document.getElementById("cfg-remember").checked;
 
-  clearAlerts("cfg-error", "cfg-success");
-  ["deriv-verifying","deriv-ok","deriv-err"].forEach(x => {
-    document.getElementById(x).style.display = "none";
-  });
-
-  if (!appId)    { shakeInput("cfg-app-id");    showAlert("cfg-error", "App ID is required."); return; }
-  if (!apiToken) { shakeInput("cfg-api-token"); showAlert("cfg-error", "API Token is required."); return; }
+  if (!appId)    { document.getElementById("cfg-app-id").focus();    return; }
+  if (!apiToken) { document.getElementById("cfg-api-token").focus(); return; }
 
   const btn = document.getElementById("btn-verify-save");
   btn.disabled = true;
   btn.textContent = "Verifying…";
-
-  document.getElementById("deriv-verifying").style.display = "block";
-  document.getElementById("deriv-verifying-text").textContent = "⟳  Verifying with Deriv & saving…";
 
   // Send to server — server verifies with Deriv then saves config.json
   fetch("/verify_and_save", {
@@ -1427,7 +1431,6 @@ function verifyAndSave() {
   })
   .then(r => r.json())
   .then(data => {
-    document.getElementById("deriv-verifying").style.display = "none";
     if (data.ok) {
       if (remember) {
         lsSet(LS_CFG_KEY, { app_id: appId, api_token: apiToken });
@@ -1436,10 +1439,6 @@ function verifyAndSave() {
         lsDel(LS_CFG_KEY);
         document.getElementById("cfg-forget-btn").style.display = "none";
       }
-
-      const acctInfo = data.account ? ` — ${data.account}` : "";
-      showDerivAlert("deriv-ok", `✓  Verified${acctInfo} · config saved`);
-
       document.getElementById("config-tag").className   = "panel-tag done-tag";
       document.getElementById("config-tag").textContent = "Saved ✓";
       document.getElementById("sess-config-status").textContent = "SAVED";
@@ -1447,14 +1446,11 @@ function verifyAndSave() {
       configSaved = true;
       onConfigDone();
     } else {
-      showDerivAlert("deriv-err", `✗  ${data.error || "Verification failed"}`);
       btn.disabled = false;
       btn.textContent = "⊙ Verify & Save Config";
     }
   })
-  .catch(err => {
-    document.getElementById("deriv-verifying").style.display = "none";
-    showDerivAlert("deriv-err", `✗  Network error: ${err.message}`);
+  .catch(() => {
     btn.disabled = false;
     btn.textContent = "⊙ Verify & Save Config";
   });
@@ -1464,8 +1460,6 @@ function skipConfig() {
   document.getElementById("sess-config-status").textContent = "EXISTING";
   document.getElementById("config-tag").className = "panel-tag done-tag";
   document.getElementById("config-tag").textContent = "Skipped";
-  clearAlerts("cfg-error");
-  showAlert("cfg-success", "ℹ  Using existing config.json on server.");
   onConfigDone();
 }
 
@@ -1493,18 +1487,10 @@ function startBot() {
     stake  = parseFloat(document.getElementById("bot-stake").value);
     maxTp  = parseFloat(document.getElementById("bot-tp").value);
     maxSl  = parseFloat(document.getElementById("bot-sl").value);
-    if (!stake || stake <= 0) {
-      showAlert("bot-settings-error", "Enter a valid stake amount."); return;
-    }
-    if (!maxTp || maxTp <= 0) {
-      showAlert("bot-settings-error", "Enter a valid take profit."); return;
-    }
-    if (!maxSl || maxSl <= 0) {
-      showAlert("bot-settings-error", "Enter a valid stop loss."); return;
-    }
+    if (!stake || stake <= 0) return;
+    if (!maxTp  || maxTp  <= 0) return;
+    if (!maxSl  || maxSl  <= 0) return;
   }
-
-  clearAlerts("bot-settings-error");
 
   const btn = document.getElementById("btn-start-bot");
   btn.disabled = true;
@@ -1761,7 +1747,6 @@ function stopSession() {
   document.getElementById("btn-connect").textContent = "⌁ Verify & Connect";
   document.getElementById("lic-name").classList.remove("success-field");
   document.getElementById("lic-token").classList.remove("success-field");
-  clearAlerts("lic-success");
 
   lockPanel("panel-config");
   lockPanel("panel-bot-settings");
